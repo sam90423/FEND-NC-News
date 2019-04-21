@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import { ArticleList } from "./StudentList";
+import { ArticleList } from "./ArticleList";
 
 export default class Students extends React.Component {
   state = {
@@ -18,7 +18,7 @@ export default class Students extends React.Component {
         <h2>Articles</h2>
 
         {this.state.articlesList && (
-          <ArticlesList articles={this.state.articlesList} />
+          <ArticleList articles={this.state.articlesList} />
         )}
       </div>
     );
