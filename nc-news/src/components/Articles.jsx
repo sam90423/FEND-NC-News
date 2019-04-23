@@ -7,8 +7,8 @@ export default class Students extends React.Component {
     articlesList: null
   };
   componentDidMount() {
-    const url = "https://nc-student-tracker.herokuapp.com/api/students";
-    Axios.get(url).then(({ data: { articles } }) => {
+    const articleUrl = "https://nc-student-tracker.herokuapp.com/api/students";
+    Axios.get(articleUrl).then(({ data: { articles } }) => {
       this.setState({ articleList: articles });
     });
   }
