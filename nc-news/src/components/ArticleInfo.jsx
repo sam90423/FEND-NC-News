@@ -1,23 +1,22 @@
 import React from "react";
 import Axios from "axios";
 import { DeleteButton } from "./DeleteButton";
-import { Vote } from "./Vote";
 
 export default class Article extends React.Component {
   state = {
-    articleInfo: null,
-    commentList: null,
+    articleInfo: [],
+    commentList: [],
     commentInput: ""
   };
   componentDidMount() {
-    const articleUrl = `https://nc-student-tracker.herokuapp.com/api/students/${
+    const articleUrl = `https://nc-news808.herokuapp.com/api/articles/${
       this.props.articleid
     }`;
-
+    console.log(this.props.articleid);
     Axios.get(articleUrl).then(({ data: { article } }) => {
       this.setState({ articleInfo: article });
     });
-    const commentUrl = `https://nc-student-tracker.herokuapp.com/api/${
+    const commentUrl = `https://nc-news808.herokuapp.com/api/articles/${
       this.props.articleid
     }/comments`;
 
@@ -36,9 +35,8 @@ export default class Article extends React.Component {
             <p>Author: {this.state.articleInfo.author}</p>
             <p>Body:{this.state.articleInfo.body}</p>
             <p>Votes: {this.state.articleInfo.votes}</p>
-            <Vote vote={this.vote} />
 
-            <h3>Add New Comment</h3>
+            <h3>Add A New Comment</h3>
             <input
               name="commentInput"
               value={this.state.commentInput}
@@ -48,20 +46,21 @@ export default class Article extends React.Component {
             />
             <button onClick={this.addComment}>Add Comment</button>
 
-            <h3>Comments:</h3>
             <div>
-              {this.state.comments.map((comment, index) => {
-                return (
-                  <div className="comments" key={index}>
-                    <p>Created At: {comment.created_at}</p>
-                    <p>Author: {comment.author}</p>
-                    <p>Body: {comment.body}</p>
-                    <p>Votes: {comment.votes}</p>
-                    <Vote votes={this.votes} />
-                    <DeleteButton deleteComment={this.deleteComment} />
-                  </div>
-                );
-              })}
+              <h3>Comments:</h3>
+              <div>
+                {this.state.commentList.map((comment, index) => {
+                  return (
+                    <div className="comments" key={index}>
+                      <p>Created At: {comment.created_at}</p>
+                      <p>Author: {comment.author}</p>
+                      <p>Body: {comment.body}</p>
+                      <p>Votes: {comment.votes}</p>
+                      <DeleteButton deleteComment={this.deleteComment} />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         )}
@@ -74,9 +73,7 @@ export default class Article extends React.Component {
   };
 
   deleteComment = () => {
-    const url = `https://nc-student-tracker.herokuapp.com/api/comments/${
-      this.props.commentid
-    }`;
+    const url = `https://nc-news808.herokuapp.com/api/comments`;
     Axios.delete(url).then(res => {
       console.log(res);
       this.setState({ commentInfo: res.data });
@@ -85,7 +82,7 @@ export default class Article extends React.Component {
 
   addComment = event => {
     event.preventDefault();
-    const url = "https://nc-student-tracker.herokuapp.com/api/comments";
+    const url = "https://nc-news808.herokuapp.com/api/comments";
     Axios.post(url, {
       body: this.state.commentInput
     })

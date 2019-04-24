@@ -2,16 +2,21 @@ import React from "react";
 import Axios from "axios";
 import { ArticleList } from "./ArticleList";
 
-export default class Students extends React.Component {
+export default class Articles extends React.Component {
   state = {
     articlesList: null
   };
   componentDidMount() {
-    const articleUrl = "https://nc-student-tracker.herokuapp.com/api/students";
+    //  console.log("asd");
+    const articleUrl = "https://nc-news808.herokuapp.com/api/articles";
     Axios.get(articleUrl).then(({ data: { articles } }) => {
-      this.setState({ articleList: articles });
+      //console.log(articles);
+      this.setState({ articlesList: articles }, () => {
+        // console.log(this.state, "ehhef");
+      });
     });
   }
+
   render() {
     return (
       <div>

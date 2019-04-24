@@ -6,8 +6,8 @@ export const ArticleList = props => {
     <div>
       {props.articles.slice(0, 20).map(article => {
         return (
-          <div key={article._id}>
-            <Link to={`${article._id}`}>{article.title}</Link>
+          <div key={article.article_id}>
+            <Link to={`${article.article_id}`}>{article.title}</Link>
           </div>
         );
       })}
