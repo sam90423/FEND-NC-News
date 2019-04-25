@@ -18,6 +18,11 @@ export default class Article extends React.Component {
       this.setState({ articleInfo: article });
       console.log(this.state.articleInfo[0].title);
     });
+
+    this.fetchComments();
+  }
+
+  fetchComments() {
     const commentUrl = `https://nc-news808.herokuapp.com/api/articles/${
       this.props.articleid
     }/comments`;
@@ -26,6 +31,12 @@ export default class Article extends React.Component {
       this.setState({ commentList: comments });
       console.log(this.state.comments);
     });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.commentList !== prevState.commentList) {
+      this.fetchComments();
+    }
   }
   render() {
     return (
