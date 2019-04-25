@@ -1,22 +1,26 @@
 import React from "react";
 import Axios from "axios";
-import { DeleteButton } from "./DeleteButton";
 
 export default class Article extends React.Component {
   state = {
     articleInfo: [],
     commentList: [],
     commentInput: "",
-    userInput: ""
+    userInput: "",
+    voteCount: 0,
+    voteLoading: true,
+    voteError: null,
+    amount: 0,
+    upValue: 1,
+    downValue: -1
   };
   componentDidMount() {
     const articleUrl = `https://nc-news808.herokuapp.com/api/articles/${
       this.props.articleid
     }`;
-    console.log(this.props.articleid);
+
     Axios.get(articleUrl).then(({ data: { article } }) => {
       this.setState({ articleInfo: article });
-      console.log(this.state.articleInfo[0].title);
     });
 
     this.fetchComments();
@@ -29,15 +33,14 @@ export default class Article extends React.Component {
 
     Axios.get(commentUrl).then(({ data: { comments } }) => {
       this.setState({ commentList: comments });
-      console.log(this.state.comments);
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.commentList !== prevState.commentList) {
-      this.fetchComments();
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.commentList !== prevState.commentList) {
+  //     this.fetchComments();
+  //   }
+  // }
   render() {
     return (
       <div>
@@ -52,7 +55,21 @@ export default class Article extends React.Component {
                     <p>Topic: {article.topic}</p>
                     <p>Author: {article.author}</p>
                     <p>Body:{article.body}</p>
-                    <p>Votes: {article.votes}</p>
+                    <p>Votes: {this.state.voteCount}</p>
+                    <button
+                      name="yes"
+                      value={this.state.upValue}
+                      onClick={() => this.handleVote(1)}
+                    >
+                      YES!
+                    </button>
+                    <button
+                      name="no"
+                      value={this.state.downValue}
+                      onClick={() => this.handleVote(-1)}
+                    >
+                      NO!
+                    </button>
                   </div>
                 );
               })}
@@ -84,7 +101,6 @@ export default class Article extends React.Component {
                     <p>Author: {comment.author}</p>
                     <p>Body: {comment.body}</p>
                     <p>Votes: {comment.votes}</p>
-                    <DeleteButton deleteComment={this.deleteComment} />
                   </div>
                 );
               })}
@@ -107,6 +123,19 @@ export default class Article extends React.Component {
     });
   };
 
+  handleVote = amount => {
+    const url = `https://nc-news808.herokuapp.com/api/articles/${
+      this.props.articleid
+    }`;
+
+    Axios.patch(url, { inc_votes: amount });
+    this.setState(prevState => {
+      return {
+        voteCount: prevState.voteCount + amount
+      };
+    });
+  };
+
   addComment = event => {
     event.preventDefault();
     const url = `https://nc-news808.herokuapp.com/api/articles/${
@@ -117,8 +146,11 @@ export default class Article extends React.Component {
       username: this.state.userInput,
       body: this.state.commentInput
     })
-      .then(result => {
-        console.log(result);
+      .then(res => {
+        this.setState(state => ({
+          commentList: [res.data.comment, ...state.commentList]
+        }));
+        console.log(res);
       })
       .catch(err => console.log(err));
     // const name = this.state.nameInput;
