@@ -7,7 +7,7 @@ export default class Students extends React.Component {
     topicsList: null
   };
   componentDidMount() {
-    const topicUrl = "https://nc-student-tracker.herokuapp.com/api/topics";
+    const topicUrl = "https://nc-news808.herokuapp.com/api/topics";
     Axios.get(topicUrl).then(({ data: { topics } }) => {
       this.setState({ topicsList: topics });
     });

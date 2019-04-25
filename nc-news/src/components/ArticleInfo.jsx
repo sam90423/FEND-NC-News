@@ -6,7 +6,8 @@ export default class Article extends React.Component {
   state = {
     articleInfo: [],
     commentList: [],
-    commentInput: ""
+    commentInput: "",
+    userInput: ""
   };
   componentDidMount() {
     const articleUrl = `https://nc-news808.herokuapp.com/api/articles/${
@@ -15,6 +16,7 @@ export default class Article extends React.Component {
     console.log(this.props.articleid);
     Axios.get(articleUrl).then(({ data: { article } }) => {
       this.setState({ articleInfo: article });
+      console.log(this.state.articleInfo[0].title);
     });
     const commentUrl = `https://nc-news808.herokuapp.com/api/articles/${
       this.props.articleid
@@ -22,48 +24,62 @@ export default class Article extends React.Component {
 
     Axios.get(commentUrl).then(({ data: { comments } }) => {
       this.setState({ commentList: comments });
+      console.log(this.state.comments);
     });
   }
   render() {
     return (
       <div>
         <h1>Article</h1>
-        {this.state.articleInfo && (
+        <div>
           <div>
-            <p>Title: {this.state.articleInfo.title}</p>
-            <p>Topic: {this.state.articleInfo.topic}</p>
-            <p>Author: {this.state.articleInfo.author}</p>
-            <p>Body:{this.state.articleInfo.body}</p>
-            <p>Votes: {this.state.articleInfo.votes}</p>
-
-            <h3>Add A New Comment</h3>
-            <input
-              name="commentInput"
-              value={this.state.commentInput}
-              onChange={this.handleChange}
-              id="name"
-              type="text"
-            />
-            <button onClick={this.addComment}>Add Comment</button>
-
             <div>
+              {this.state.articleInfo.map(article => {
+                return (
+                  <div>
+                    <p>Title: {article.title}</p>
+                    <p>Topic: {article.topic}</p>
+                    <p>Author: {article.author}</p>
+                    <p>Body:{article.body}</p>
+                    <p>Votes: {article.votes}</p>
+                  </div>
+                );
+              })}
+
               <h3>Comments:</h3>
-              <div>
-                {this.state.commentList.map((comment, index) => {
-                  return (
-                    <div className="comments" key={index}>
-                      <p>Created At: {comment.created_at}</p>
-                      <p>Author: {comment.author}</p>
-                      <p>Body: {comment.body}</p>
-                      <p>Votes: {comment.votes}</p>
-                      <DeleteButton deleteComment={this.deleteComment} />
-                    </div>
-                  );
-                })}
-              </div>
+              <h3>Add A New Comment</h3>
+              <p>Username</p>
+              <input
+                name="userInput"
+                value={this.state.userInput}
+                onChange={this.handleChange}
+                id="username"
+                type="text"
+              />
+              <p>Comment</p>
+              <input
+                name="commentInput"
+                value={this.state.commentInput}
+                onChange={this.handleChange}
+                id="body"
+                type="text"
+              />
+              <button onClick={this.addComment}>Add Comment</button>
+
+              {this.state.commentList.map((comment, index) => {
+                return (
+                  <div className="comments" key={index}>
+                    <p>Created At: {comment.created_at}</p>
+                    <p>Author: {comment.author}</p>
+                    <p>Body: {comment.body}</p>
+                    <p>Votes: {comment.votes}</p>
+                    <DeleteButton deleteComment={this.deleteComment} />
+                  </div>
+                );
+              })}
             </div>
           </div>
-        )}
+        </div>
       </div>
     );
   }
@@ -82,8 +98,12 @@ export default class Article extends React.Component {
 
   addComment = event => {
     event.preventDefault();
-    const url = "https://nc-news808.herokuapp.com/api/comments";
+    const url = `https://nc-news808.herokuapp.com/api/articles/${
+      this.props.articleid
+    }/comments`;
+    console.log(this.state.commentInput, this.state.userInput);
     Axios.post(url, {
+      username: this.state.userInput,
       body: this.state.commentInput
     })
       .then(result => {

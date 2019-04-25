@@ -18,7 +18,7 @@ class App extends Component {
           <Articles path="/articles" />
           <Article path="/articles/:articleid" />
           <Topics path="/topics" />
-          <Topic path="/articles/:articleid?topic=cats" />
+          <Topic path="/topics/:topicslug" />
         </Router>
       </div>
     );
