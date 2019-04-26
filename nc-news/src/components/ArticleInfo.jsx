@@ -93,30 +93,6 @@ export default class Article extends React.Component {
               <button onClick={this.addComment}>Add Comment</button>
 
               <CommentList comments={this.state.commentList} />
-
-              {/* {this.state.commentList.map((comment, index) => {
-                return (
-                  <div className="comments" key={index}>
-                    <p>Created At: {comment.created_at}</p>
-                    <p>Author: {comment.author}</p>
-                    <p>Body: {comment.body}</p>
-                    <p>Votes: {comment.votes}</p>
-                    <p>Votes: {this.state.commentVoteCount}</p>
-                    <button
-                      name="yes"
-                      onClick={() => this.handleCommentVote(1)}
-                    >
-                      YES!
-                    </button>
-                    <button
-                      name="no"
-                      onClick={() => this.handleCommentVote(-1)}
-                    >
-                      NO!
-                    </button>
-                  </div>
-                );
-              })} */}
             </div>
           </div>
         </div>
