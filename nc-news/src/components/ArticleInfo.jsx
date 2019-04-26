@@ -1,5 +1,6 @@
 import React from "react";
 import Axios from "axios";
+import CommentList from "./CommentList";
 
 export default class Article extends React.Component {
   state = {
@@ -7,12 +8,10 @@ export default class Article extends React.Component {
     commentList: [],
     commentInput: "",
     userInput: "",
-    voteCount: 0,
+    articleVoteCount: 0,
+    commentVoteCount: 0,
     voteLoading: true,
-    voteError: null,
-    amount: 0,
-    upValue: 1,
-    downValue: -1
+    voteError: null
   };
   componentDidMount() {
     const articleUrl = `https://nc-news808.herokuapp.com/api/articles/${
@@ -55,18 +54,17 @@ export default class Article extends React.Component {
                     <p>Topic: {article.topic}</p>
                     <p>Author: {article.author}</p>
                     <p>Body:{article.body}</p>
-                    <p>Votes: {this.state.voteCount}</p>
+                    <p>Votes: {article.votes}</p>
+                    <p>Votes: {this.state.articleVoteCount}</p>
                     <button
                       name="yes"
-                      value={this.state.upValue}
-                      onClick={() => this.handleVote(1)}
+                      onClick={() => this.handleArticleVote(1)}
                     >
                       YES!
                     </button>
                     <button
                       name="no"
-                      value={this.state.downValue}
-                      onClick={() => this.handleVote(-1)}
+                      onClick={() => this.handleArticleVote(-1)}
                     >
                       NO!
                     </button>
@@ -94,16 +92,31 @@ export default class Article extends React.Component {
               />
               <button onClick={this.addComment}>Add Comment</button>
 
-              {this.state.commentList.map((comment, index) => {
+              <CommentList comments={this.state.commentList} />
+
+              {/* {this.state.commentList.map((comment, index) => {
                 return (
                   <div className="comments" key={index}>
                     <p>Created At: {comment.created_at}</p>
                     <p>Author: {comment.author}</p>
                     <p>Body: {comment.body}</p>
                     <p>Votes: {comment.votes}</p>
+                    <p>Votes: {this.state.commentVoteCount}</p>
+                    <button
+                      name="yes"
+                      onClick={() => this.handleCommentVote(1)}
+                    >
+                      YES!
+                    </button>
+                    <button
+                      name="no"
+                      onClick={() => this.handleCommentVote(-1)}
+                    >
+                      NO!
+                    </button>
                   </div>
                 );
-              })}
+              })} */}
             </div>
           </div>
         </div>
@@ -123,7 +136,22 @@ export default class Article extends React.Component {
     });
   };
 
-  handleVote = amount => {
+  handleCommentVote = amount => {
+    console.log(this.state.commentList);
+    console.log(this.state.commentList[0].comment_id);
+    const url = `https://nc-news808.herokuapp.com/api/comments/${
+      this.state.commentList[0].comment_id
+    }`;
+
+    Axios.patch(url, { inc_votes: amount });
+    this.setState(prevState => {
+      return {
+        commentVoteCount: prevState.commentVoteCount + amount
+      };
+    });
+  };
+
+  handleArticleVote = amount => {
     const url = `https://nc-news808.herokuapp.com/api/articles/${
       this.props.articleid
     }`;
@@ -131,7 +159,7 @@ export default class Article extends React.Component {
     Axios.patch(url, { inc_votes: amount });
     this.setState(prevState => {
       return {
-        voteCount: prevState.voteCount + amount
+        articleVoteCount: prevState.articleVoteCount + amount
       };
     });
   };
