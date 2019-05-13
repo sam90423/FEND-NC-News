@@ -56,43 +56,55 @@ export default class Article extends React.Component {
                     <p>Body:{article.body}</p>
                     <p>Votes: {article.votes}</p>
                     <p>Votes: {this.state.articleVoteCount}</p>
-                    <button
-                      name="yes"
-                      onClick={() => this.handleArticleVote(1)}
-                    >
-                      YES!
-                    </button>
-                    <button
-                      name="no"
-                      onClick={() => this.handleArticleVote(-1)}
-                    >
-                      NO!
-                    </button>
+                    {this.props.loginUser && (
+                      <div>
+                        {" "}
+                        <button
+                          name="yes"
+                          onClick={() => this.handleArticleVote(1)}
+                        >
+                          YES!
+                        </button>
+                        <button
+                          name="no"
+                          onClick={() => this.handleArticleVote(-1)}
+                        >
+                          NO!
+                        </button>
+                      </div>
+                    )}
                   </div>
                 );
               })}
 
               <h3>Comments:</h3>
-              <h3>Add A New Comment</h3>
-              <p>Username</p>
-              <input
-                name="userInput"
-                value={this.state.userInput}
-                onChange={this.handleChange}
-                id="username"
-                type="text"
-              />
-              <p>Comment</p>
-              <input
-                name="commentInput"
-                value={this.state.commentInput}
-                onChange={this.handleChange}
-                id="body"
-                type="text"
-              />
-              <button onClick={this.addComment}>Add Comment</button>
+              {this.props.loginUser && (
+                <div>
+                  <h3>Add A New Comment</h3>
+                  <p>Username</p>
+                  <input
+                    name="userInput"
+                    value={this.state.userInput}
+                    onChange={this.handleChange}
+                    id="username"
+                    type="text"
+                  />
+                  <p>Comment</p>
+                  <input
+                    name="commentInput"
+                    value={this.state.commentInput}
+                    onChange={this.handleChange}
+                    id="body"
+                    type="text"
+                  />
+                  <button onClick={this.addComment}>Add Comment</button>
+                </div>
+              )}
 
-              <CommentList comments={this.state.commentList} />
+              <CommentList
+                comments={this.state.commentList}
+                loginUser={this.props.loginUser}
+              />
             </div>
           </div>
         </div>

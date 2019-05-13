@@ -27,22 +27,26 @@ export default class Comment extends React.Component {
           <p>Body: {this.props.comment.body}</p>
 
           <p>Votes: {this.state.commentVoteCount}</p>
-          <button
-            name="yes"
-            onClick={() =>
-              this.handleCommentVote(1, this.props.comment.comment_id)
-            }
-          >
-            YES!
-          </button>
-          <button
-            name="no"
-            onClick={() =>
-              this.handleCommentVote(-1, this.props.comment.comment_id)
-            }
-          >
-            NO!
-          </button>
+          {this.props.loginUser && (
+            <div>
+              <button
+                name="yes"
+                onClick={() =>
+                  this.handleCommentVote(1, this.props.comment.comment_id)
+                }
+              >
+                YES!
+              </button>
+              <button
+                name="no"
+                onClick={() =>
+                  this.handleCommentVote(-1, this.props.comment.comment_id)
+                }
+              >
+                NO!
+              </button>{" "}
+            </div>
+          )}
         </div>
       </div>
     );

@@ -7,7 +7,10 @@ export default class Header extends React.Component {
     return (
       <div>
         <h1>NC-News</h1>
-        <Login loginUserName={this.props.loginUserName} />
+        <Login
+          loginUserName={this.props.loginUserName}
+          logOutUserName={this.props.logOutUserName}
+        />
         <nav>
           <Link to="/">Home</Link>
           <Link to="/articles">Articles</Link>

@@ -8,6 +8,8 @@ import Article from "./components/ArticleInfo";
 import Topics from "./components/Topics";
 import Topic from "./components/TopicInfo";
 import User from "./components/User";
+import Error from "./components/Error";
+import { LogOutPage } from "./components/LogOutPage";
 
 class App extends Component {
   state = {
@@ -17,14 +19,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header loginUserName={this.loginUserName} />
+        <Header
+          loginUserName={this.loginUserName}
+          logOutUserName={this.logOutUserName}
+        />
         <Router>
           <Home path="/" />
           <Articles path="/articles" />
-          <Article path="/articles/:articleid" />
+          <Article
+            path="/articles/:articleid"
+            loginUser={this.state.loginUser}
+          />
           <Topics path="/topics" />
           <Topic path="/topics/:topicslug" />
           <User path="/users/:username" />
+          <Error path="/error" />
+          <LogOutPage path="/logoutpage" />
         </Router>
       </div>
     );
@@ -32,6 +42,10 @@ class App extends Component {
 
   loginUserName = username => {
     this.setState({ loginUser: username });
+  };
+
+  logOutUserName = () => {
+    this.setState({ loginUser: "" });
   };
 }
 
