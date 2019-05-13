@@ -9,18 +9,18 @@ export default class Login extends React.Component {
   };
 
   render() {
-    // const { err } = this.state;
-    // if (err) return <Error />;
     return (
       <div>
-        <input
-          value={this.state.userNameInput}
-          onChange={this.handleChange}
-          id="username"
-          type="text"
-        />
-        <button onClick={this.loginUser}>Log In</button>
-        <button onClick={this.logOutUser}>Log Out</button>
+        <form>
+          <input
+            value={this.state.userNameInput}
+            onChange={this.handleChange}
+            id="username"
+            type="text"
+          />
+          <button onClick={this.loginUser}>Log In</button>
+          <button onClick={this.logOutUser}>Log Out</button>
+        </form>
       </div>
     );
   }

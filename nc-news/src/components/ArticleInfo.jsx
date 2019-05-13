@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import CommentList from "./CommentList";
+import AddComment from "./AddComment";
 
 export default class Article extends React.Component {
   state = {
@@ -73,28 +74,12 @@ export default class Article extends React.Component {
               })}
 
               <h3>Comments:</h3>
-              {this.props.loginUser && (
-                <div>
-                  <h3>Add A New Comment</h3>
-                  <p>Username</p>
-                  <input
-                    name="userInput"
-                    value={this.state.userInput}
-                    onChange={this.handleChange}
-                    id="username"
-                    type="text"
-                  />
-                  <p>Comment</p>
-                  <input
-                    name="commentInput"
-                    value={this.state.commentInput}
-                    onChange={this.handleChange}
-                    id="body"
-                    type="text"
-                  />
-                  <button onClick={this.addComment}>Add Comment</button>
-                </div>
-              )}
+              <AddComment
+                loginUser={this.props.loginUser}
+                articleid={this.props.articleid}
+                addComment={this.addComment}
+                handleChange={this.handleChange}
+              />
 
               <CommentList
                 deleteComment={this.deleteComment}
@@ -151,7 +136,7 @@ export default class Article extends React.Component {
       this.props.articleid
     }/comments`;
     Axios.post(url, {
-      username: this.state.userInput,
+      username: this.props.loginUser,
       body: this.state.commentInput
     })
       .then(res => {
