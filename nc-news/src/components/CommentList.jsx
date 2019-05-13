@@ -27,7 +27,11 @@ export default class CommentList extends React.Component {
         {this.props.comments.map((comment, index) => {
           return (
             <div className="comments" key={index}>
-              <CommentInfo comment={comment} loginUser={this.props.loginUser} />
+              <CommentInfo
+                deleteComment={this.props.deleteComment}
+                comment={comment}
+                loginUser={this.props.loginUser}
+              />
             </div>
           );
         })}

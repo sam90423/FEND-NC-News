@@ -45,6 +45,15 @@ export default class Comment extends React.Component {
               >
                 NO!
               </button>{" "}
+              {this.props.loginUser === this.props.comment.author && (
+                <button
+                  onClick={() =>
+                    this.props.deleteComment(this.props.comment.comment_id)
+                  }
+                >
+                  Delete Comment
+                </button>
+              )}
             </div>
           )}
         </div>

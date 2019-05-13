@@ -6,14 +6,18 @@ export default class Articles extends React.Component {
   state = {
     articlesList: null
   };
+
+  sortArticles = sort_by => {
+    const url = `https://nc-news808.herokuapp.com/api/articles?sort_by=${sort_by}`;
+    Axios.get(url).then(({ data: { articles } }) => {
+      this.setState({ articlesList: articles });
+    });
+  };
+
   componentDidMount() {
-    //  console.log("asd");
     const articleUrl = "https://nc-news808.herokuapp.com/api/articles";
     Axios.get(articleUrl).then(({ data: { articles } }) => {
-      //console.log(articles);
-      this.setState({ articlesList: articles }, () => {
-        // console.log(this.state, "ehhef");
-      });
+      this.setState({ articlesList: articles });
     });
   }
 
@@ -21,7 +25,13 @@ export default class Articles extends React.Component {
     return (
       <div>
         <h2>Articles</h2>
-
+        <button onClick={() => this.sortArticles("created_at")}>
+          Most Recent
+        </button>
+        <button onClick={() => this.sortArticles("votes")}>Most Votes</button>
+        <button onClick={() => this.sortArticles("comment_count")}>
+          Most Comments
+        </button>
         {this.state.articlesList && (
           <ArticleList articles={this.state.articlesList} />
         )}

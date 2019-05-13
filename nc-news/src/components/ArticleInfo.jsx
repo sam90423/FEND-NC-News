@@ -35,11 +35,6 @@ export default class Article extends React.Component {
     });
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.commentList !== prevState.commentList) {
-  //     this.fetchComments();
-  //   }
-  // }
   render() {
     return (
       <div>
@@ -49,7 +44,7 @@ export default class Article extends React.Component {
             <div>
               {this.state.articleInfo.map(article => {
                 return (
-                  <div>
+                  <div key={article.article_id}>
                     <p>Title: {article.title}</p>
                     <p>Topic: {article.topic}</p>
                     <p>Author: {article.author}</p>
@@ -102,6 +97,7 @@ export default class Article extends React.Component {
               )}
 
               <CommentList
+                deleteComment={this.deleteComment}
                 comments={this.state.commentList}
                 loginUser={this.props.loginUser}
               />
@@ -116,17 +112,14 @@ export default class Article extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  deleteComment = () => {
-    const url = `https://nc-news808.herokuapp.com/api/comments`;
-    Axios.delete(url).then(res => {
-      console.log(res);
-      this.setState({ commentInfo: res.data });
+  deleteComment = comment_id => {
+    const url = `https://nc-news808.herokuapp.com/api/comments/${comment_id}`;
+    Axios.delete(url).then(() => {
+      this.fetchComments();
     });
   };
 
   handleCommentVote = amount => {
-    console.log(this.state.commentList);
-    console.log(this.state.commentList[0].comment_id);
     const url = `https://nc-news808.herokuapp.com/api/comments/${
       this.state.commentList[0].comment_id
     }`;
@@ -157,7 +150,6 @@ export default class Article extends React.Component {
     const url = `https://nc-news808.herokuapp.com/api/articles/${
       this.props.articleid
     }/comments`;
-    console.log(this.state.commentInput, this.state.userInput);
     Axios.post(url, {
       username: this.state.userInput,
       body: this.state.commentInput
@@ -169,8 +161,5 @@ export default class Article extends React.Component {
         console.log(res);
       })
       .catch(err => console.log(err));
-    // const name = this.state.nameInput;
-    // this.setState({ nameInput: name });
-    // console.log(event);
   };
 }

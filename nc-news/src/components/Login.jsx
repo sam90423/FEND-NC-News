@@ -39,17 +39,20 @@ export default class Login extends React.Component {
 
   loginUser = event => {
     event.preventDefault();
-    this.checkValidUser(this.state.userNameInput).then(user => {
-      this.props.loginUserName(user.username);
-      navigate(`/users/${user.username}`, {
-        state: { directedFromLogin: true }
-      }).catch(err => {
+    this.checkValidUser(this.state.userNameInput)
+      .then(user => {
+        this.props.loginUserName(user.username);
+
+        navigate(`/users/${user.username}`, {
+          state: { directedFromLogin: true }
+        });
+      })
+      .catch(err => {
         navigate("/error", {
           replace: true,
           state: { displayErr: err.msg }
         });
       });
-    });
   };
 
   logOutUser = event => {
