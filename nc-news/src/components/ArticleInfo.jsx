@@ -2,6 +2,7 @@ import React from "react";
 import Axios from "axios";
 import CommentList from "./CommentList";
 import AddComment from "./AddComment";
+import { SingleArticle } from "./SingleArticle";
 
 export default class Article extends React.Component {
   state = {
@@ -43,35 +44,12 @@ export default class Article extends React.Component {
         <div>
           <div>
             <div>
-              {this.state.articleInfo.map(article => {
-                return (
-                  <div key={article.article_id}>
-                    <p>Title: {article.title}</p>
-                    <p>Topic: {article.topic}</p>
-                    <p>Author: {article.author}</p>
-                    <p>Body:{article.body}</p>
-                    <p>Votes: {article.votes}</p>
-                    <p>Votes: {this.state.articleVoteCount}</p>
-                    {this.props.loginUser && (
-                      <div>
-                        {" "}
-                        <button
-                          name="yes"
-                          onClick={() => this.handleArticleVote(1)}
-                        >
-                          YES!
-                        </button>
-                        <button
-                          name="no"
-                          onClick={() => this.handleArticleVote(-1)}
-                        >
-                          NO!
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+              <SingleArticle
+                loginUser={this.props.loginUser}
+                articles={this.state.articleInfo}
+                handleArticleVote={this.handleArticleVote}
+                articleVoteCount={this.state.articleVoteCount}
+              />
 
               <h3>Comments:</h3>
               <AddComment
