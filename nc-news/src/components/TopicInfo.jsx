@@ -1,5 +1,5 @@
 import React from "react";
-import Axios from "axios";
+import { getArticlesByTopic } from "../api.js";
 
 export default class Topic extends React.Component {
   state = {
@@ -7,30 +7,19 @@ export default class Topic extends React.Component {
     relArticlesInfo: []
   };
   componentDidMount() {
-    const topicUrl = `https://nc-news808.herokuapp.com/api/topics/${
-      this.props.topicslug
-    }`;
-
-    const articleUrl = `https://nc-news808.herokuapp.com/api/articles?topic=${
-      this.props.topicslug
-    }`;
-
-    Axios.get(articleUrl).then(({ data: { articles } }) => {
-      console.log(articles);
+    getArticlesByTopic(this.props.topicslug).then(articles => {
       this.setState({ relArticlesInfo: articles });
-      console.log(this.state.relArticleInfo);
-    });
-
-    Axios.get(topicUrl).then(({ data: { topic } }) => {
-      console.log(topic);
-      this.setState({ topicInfo: topic });
-      console.log(this.state.topicInfo);
     });
   }
   render() {
+    // console.log(this.state.relArticlesInfo[0].topic);
     return (
       <div>
         <h1>Topic</h1>
+        {/* {this.state.relArticlesInfo && (
+          <h2>{this.state.relArticlesInfo[0].topic}</h2>
+        )} */}
+
         {this.state.topicInfo.map(topic => {
           return (
             <div>

@@ -1,14 +1,13 @@
 import React from "react";
-import Axios from "axios";
 import { TopicList } from "./TopicList";
+import { getTopics } from "../api.js";
 
 export default class Students extends React.Component {
   state = {
     topicsList: null
   };
   componentDidMount() {
-    const topicUrl = "https://nc-news808.herokuapp.com/api/topics";
-    Axios.get(topicUrl).then(({ data: { topics } }) => {
+    getTopics().then(topics => {
       this.setState({ topicsList: topics });
     });
   }

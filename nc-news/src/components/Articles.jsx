@@ -1,22 +1,14 @@
 import React from "react";
-import Axios from "axios";
 import { ArticleList } from "./ArticleList";
+import { getArticles, sortArticles } from "../api.js";
 
 export default class Articles extends React.Component {
   state = {
     articlesList: null
   };
 
-  sortArticles = sort_by => {
-    const url = `https://nc-news808.herokuapp.com/api/articles?sort_by=${sort_by}`;
-    Axios.get(url).then(({ data: { articles } }) => {
-      this.setState({ articlesList: articles });
-    });
-  };
-
   componentDidMount() {
-    const articleUrl = "https://nc-news808.herokuapp.com/api/articles";
-    Axios.get(articleUrl).then(({ data: { articles } }) => {
+    getArticles().then(articles => {
       this.setState({ articlesList: articles });
     });
   }
@@ -25,11 +17,31 @@ export default class Articles extends React.Component {
     return (
       <div>
         <h2>Articles</h2>
-        <button onClick={() => this.sortArticles("created_at")}>
+        <button
+          onClick={() =>
+            sortArticles("created_at").then(articles => {
+              this.setState({ articlesList: articles });
+            })
+          }
+        >
           Most Recent
         </button>
-        <button onClick={() => this.sortArticles("votes")}>Most Votes</button>
-        <button onClick={() => this.sortArticles("comment_count")}>
+        <button
+          onClick={() =>
+            sortArticles("votes").then(articles => {
+              this.setState({ articlesList: articles });
+            })
+          }
+        >
+          Most Votes
+        </button>
+        <button
+          onClick={() =>
+            sortArticles("comment_count").then(articles => {
+              this.setState({ articlesList: articles });
+            })
+          }
+        >
           Most Comments
         </button>
         {this.state.articlesList && (

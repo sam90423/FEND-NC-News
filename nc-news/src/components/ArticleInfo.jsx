@@ -3,6 +3,7 @@ import Axios from "axios";
 import CommentList from "./CommentList";
 import AddComment from "./AddComment";
 import { SingleArticle } from "./SingleArticle";
+import { getArticleById, getComments, delComment, addComment } from "../api.js";
 
 export default class Article extends React.Component {
   state = {
@@ -16,23 +17,11 @@ export default class Article extends React.Component {
     voteError: null
   };
   componentDidMount() {
-    const articleUrl = `https://nc-news808.herokuapp.com/api/articles/${
-      this.props.articleid
-    }`;
-
-    Axios.get(articleUrl).then(({ data: { article } }) => {
+    getArticleById(this.props.articleid).then(article => {
       this.setState({ articleInfo: article });
     });
 
-    this.fetchComments();
-  }
-
-  fetchComments() {
-    const commentUrl = `https://nc-news808.herokuapp.com/api/articles/${
-      this.props.articleid
-    }/comments`;
-
-    Axios.get(commentUrl).then(({ data: { comments } }) => {
+    getComments(this.props.articleid).then(comments => {
       this.setState({ commentList: comments });
     });
   }
@@ -76,9 +65,12 @@ export default class Article extends React.Component {
   };
 
   deleteComment = comment_id => {
-    const url = `https://nc-news808.herokuapp.com/api/comments/${comment_id}`;
-    Axios.delete(url).then(() => {
-      this.fetchComments();
+    delComment(comment_id);
+    const newComments = this.state.commentList.filter(comment => {
+      return comment.comment_id !== comment_id;
+    });
+    this.setState({
+      commentList: newComments
     });
   };
 
@@ -110,19 +102,14 @@ export default class Article extends React.Component {
 
   addComment = event => {
     event.preventDefault();
-    const url = `https://nc-news808.herokuapp.com/api/articles/${
-      this.props.articleid
-    }/comments`;
-    Axios.post(url, {
-      username: this.props.loginUser,
-      body: this.state.commentInput
-    })
-      .then(res => {
-        this.setState(state => ({
-          commentList: [res.data.comment, ...state.commentList]
-        }));
-        console.log(res);
-      })
-      .catch(err => console.log(err));
+    addComment(
+      this.props.articleid,
+      this.props.loginUser,
+      this.state.commentInput
+    ).then(({ data: { comment } }) => {
+      this.setState(state => ({
+        commentList: [comment, ...state.commentList]
+      }));
+    });
   };
 }
