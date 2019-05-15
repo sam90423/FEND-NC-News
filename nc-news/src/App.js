@@ -33,8 +33,8 @@ class App extends Component {
           <Topics path="/topics" />
           <Topic path="/topics/:topicslug" />
           <User path="/users/:username" />
-          <Error path="/error" />
           <LogOutPage path="/logoutpage" />
+          <Error path="/error" default />
         </Router>
       </div>
     );

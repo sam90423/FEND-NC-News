@@ -11,7 +11,7 @@ export const SingleArticle = props => {
             <p>Author: {article.author}</p>
             <p>Body: {article.body}</p>
             <p>Votes: {article.votes}</p>
-            <p>Votes: {props.articleVoteCount}</p>
+            <p>Votes: {article.votes + props.articleVoteCount}</p>
             {props.loginUser && (
               <div>
                 <button name="yes" onClick={() => props.handleArticleVote(1)}>

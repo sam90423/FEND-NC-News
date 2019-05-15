@@ -3,6 +3,7 @@ import Axios from "axios";
 import CommentList from "./CommentList";
 import AddComment from "./AddComment";
 import { SingleArticle } from "./SingleArticle";
+import { navigate } from "@reach/router";
 import { getArticleById, getComments, delComment, addComment } from "../api.js";
 
 export default class Article extends React.Component {
@@ -17,9 +18,18 @@ export default class Article extends React.Component {
     voteError: null
   };
   componentDidMount() {
-    getArticleById(this.props.articleid).then(article => {
-      this.setState({ articleInfo: article });
-    });
+    getArticleById(this.props.articleid)
+      .then(article => {
+        console.log(article);
+        if (article.length === 0) return Promise.reject("Non-existent article");
+        this.setState({ articleInfo: article });
+      })
+      .catch(err => {
+        navigate("/error", {
+          replace: true,
+          state: { displayErr: err }
+        });
+      });
 
     getComments(this.props.articleid).then(comments => {
       this.setState({ commentList: comments });

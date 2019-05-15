@@ -45,6 +45,7 @@ export const addComment = (article_id, user, text) => {
 export const checkValidUser = user => {
   const url = `https://nc-news808.herokuapp.com/api/users/${user}`;
   return Axios.get(url).then(({ data: { user } }) => {
+    console.log(user);
     return user;
   });
 };

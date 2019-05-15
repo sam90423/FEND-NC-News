@@ -12,3 +12,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.loginCon {
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.login {
+  grid-column-start: 3;
+  border: 2px solid blue;
+}
