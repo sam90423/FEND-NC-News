@@ -20,11 +20,7 @@ export default class Article extends React.Component {
   componentDidMount() {
     getArticleById(this.props.articleid)
       .then(article => {
-        console.log(article, ">>>>");
-        //if (article.length === 0) return Promise.reject("Non-existent article");
-        this.setState({ articleInfo: article }, () =>
-          console.log(this.state.articleInfo)
-        );
+        this.setState({ articleInfo: article });
       })
       .catch(err => {
         navigate("/error", {

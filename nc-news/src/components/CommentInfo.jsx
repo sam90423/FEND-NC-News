@@ -30,6 +30,7 @@ export default class Comment extends React.Component {
           {this.props.loginUser && (
             <div>
               <button
+                disabled={this.state.commentVoteCount === 1}
                 name="yes"
                 onClick={() =>
                   this.handleCommentVote(1, this.props.comment.comment_id)
@@ -38,6 +39,7 @@ export default class Comment extends React.Component {
                 YES!
               </button>
               <button
+                disabled={this.state.commentVoteCount === -1}
                 name="no"
                 onClick={() =>
                   this.handleCommentVote(-1, this.props.comment.comment_id)
