@@ -20,8 +20,11 @@ export default class Article extends React.Component {
   componentDidMount() {
     getArticleById(this.props.articleid)
       .then(article => {
+        console.log(article, ">>>>");
         //if (article.length === 0) return Promise.reject("Non-existent article");
-        this.setState({ articleInfo: article });
+        this.setState({ articleInfo: article }, () =>
+          console.log(this.state.articleInfo)
+        );
       })
       .catch(err => {
         navigate("/error", {
@@ -36,6 +39,7 @@ export default class Article extends React.Component {
   }
 
   render() {
+    console.log(this.state.articleInfo);
     return (
       <div>
         <h1 className="title">Article</h1>
@@ -44,7 +48,8 @@ export default class Article extends React.Component {
             <div>
               <SingleArticle
                 loginUser={this.props.loginUser}
-                articles={this.state.articleInfo}
+                article={this.state.articleInfo}
+                articleid={this.props.articleid}
                 handleArticleVote={this.handleArticleVote}
                 articleVoteCount={this.state.articleVoteCount}
               />

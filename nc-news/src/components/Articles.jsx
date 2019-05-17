@@ -4,7 +4,8 @@ import { getArticles, sortArticles } from "../api.js";
 
 export default class Articles extends React.Component {
   state = {
-    articlesList: null
+    articlesList: null,
+    disabled: false
   };
 
   componentDidMount() {
