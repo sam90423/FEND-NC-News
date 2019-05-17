@@ -13,6 +13,15 @@ code {
     monospace;
 }
 
+.mainConPadLR {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.mainConPadT {
+  padding-top: 2em;
+}
+
 .loginCon {
   border: 2px solid black;
   display: grid;
@@ -22,4 +31,22 @@ code {
 .login {
   grid-column-start: 3;
   border: 2px solid blue;
+}
+
+.content {
+  display: block;
+  text-align: left;
+}
+
+.sortButton {
+  text-align: center;
+  margin: 5px;
+}
+
+.articleL {
+  margin: 10px;
+}
+
+.title {
+  padding-left: 1em;
 }

@@ -26,7 +26,7 @@ export default class Comment extends React.Component {
           <p>Author: {this.props.comment.author}</p>
           <p>Body: {this.props.comment.body}</p>
 
-          <p>Votes: {this.state.commentVoteCount}</p>
+          <p>Votes: {this.props.comment.votes + this.state.commentVoteCount}</p>
           {this.props.loginUser && (
             <div>
               <button

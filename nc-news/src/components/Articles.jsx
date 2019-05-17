@@ -17,33 +17,39 @@ export default class Articles extends React.Component {
     return (
       <div>
         <h2>Articles</h2>
-        <button
-          onClick={() =>
-            sortArticles("created_at").then(articles => {
-              this.setState({ articlesList: articles });
-            })
-          }
-        >
-          Most Recent
-        </button>
-        <button
-          onClick={() =>
-            sortArticles("votes").then(articles => {
-              this.setState({ articlesList: articles });
-            })
-          }
-        >
-          Most Votes
-        </button>
-        <button
-          onClick={() =>
-            sortArticles("comment_count").then(articles => {
-              this.setState({ articlesList: articles });
-            })
-          }
-        >
-          Most Comments
-        </button>
+        <div className="sortButton">
+          <button
+            onClick={() =>
+              sortArticles("created_at").then(articles => {
+                this.setState({ articlesList: articles });
+              })
+            }
+          >
+            Most Recent
+          </button>
+          <div className="sortButton">
+            <button
+              onClick={() =>
+                sortArticles("votes").then(articles => {
+                  this.setState({ articlesList: articles });
+                })
+              }
+            >
+              Most Votes
+            </button>
+          </div>
+          <div className="sortButton">
+            <button
+              onClick={() =>
+                sortArticles("comment_count").then(articles => {
+                  this.setState({ articlesList: articles });
+                })
+              }
+            >
+              Most Comments
+            </button>
+          </div>
+        </div>
         {this.state.articlesList && (
           <ArticleList articles={this.state.articlesList} />
         )}

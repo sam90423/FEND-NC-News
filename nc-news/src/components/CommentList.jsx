@@ -10,8 +10,6 @@ export default class CommentList extends React.Component {
   };
 
   handleCommentVote = (amount, comment_id) => {
-    console.log(this.props.comments);
-    console.log(comment_id);
     const url = `https://nc-news808.herokuapp.com/api/comments/${comment_id}`;
 
     Axios.patch(url, { inc_votes: amount });
@@ -22,6 +20,7 @@ export default class CommentList extends React.Component {
     });
   };
   render() {
+    console.log(this.props.comments);
     return (
       <div>
         {this.props.comments.map((comment, index) => {

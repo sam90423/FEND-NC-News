@@ -1,16 +1,19 @@
 import React from "react";
 
 export const SingleArticle = props => {
+  const articlesArr = [];
+  articlesArr.push(props.articles);
+  console.log(articlesArr);
   return (
     <div>
-      {props.articles.map(article => {
+      {articlesArr.map(article => {
+        console.log(article);
         return (
-          <div key={article.article_id}>
+          <div>
             <p>Title: {article.title}</p>
             <p>Topic: {article.topic}</p>
             <p>Author: {article.author}</p>
             <p>Body: {article.body}</p>
-            <p>Votes: {article.votes}</p>
             <p>Votes: {article.votes + props.articleVoteCount}</p>
             {props.loginUser && (
               <div>

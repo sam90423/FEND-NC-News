@@ -18,24 +18,26 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App mainConPadLR mainConPadT">
         <Header
           loginUserName={this.loginUserName}
           logOutUserName={this.logOutUserName}
         />
-        <Router>
-          <Home path="/" />
-          <Articles path="/articles" />
-          <Article
-            path="/articles/:articleid"
-            loginUser={this.state.loginUser}
-          />
-          <Topics path="/topics" />
-          <Topic path="/topics/:topicslug" />
-          <User path="/users/:username" />
-          <LogOutPage path="/logoutpage" />
-          <Error path="/error" default />
-        </Router>
+        <div className="content">
+          <Router>
+            <Home path="/" />
+            <Articles path="/articles" />
+            <Article
+              path="/articles/:articleid"
+              loginUser={this.state.loginUser}
+            />
+            <Topics path="/topics" />
+            <Topic path="/topics/:topicslug" />
+            <User path="/users/:username" />
+            <LogOutPage path="/logoutpage" />
+            <Error path="/error" default />
+          </Router>
+        </div>
       </div>
     );
   }

@@ -35,20 +35,18 @@ export default class Login extends React.Component {
     console.log("always...");
     checkValidUser(this.state.userNameInput)
       .then(user => {
-        console.log(user);
         //if (user.length === 0) return Promise.reject("Non-existent user");
 
-        console.log("jejsadf");
         this.props.loginUserName(user.username);
+        this.setState({ userNameInput: "" });
         navigate(`/users/${user.username}`, {
           state: { directedFromLogin: true }
         });
       })
       .catch(err => {
-        console.log(err, "adjsjj");
         navigate("/error", {
           replace: true,
-          state: { displayErr: err }
+          state: { displayErr: "Non-existent user" }
         });
       });
   };
@@ -56,6 +54,7 @@ export default class Login extends React.Component {
   logOutUser = event => {
     event.preventDefault();
     this.props.logOutUserName();
+    this.setState({ userNameInput: "" });
     navigate("/logoutpage");
   };
 }
