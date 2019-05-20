@@ -7,9 +7,7 @@ import Articles from "./components/Articles";
 import Article from "./components/ArticleInfo";
 import Topics from "./components/Topics";
 import Topic from "./components/TopicInfo";
-import User from "./components/User";
 import Error from "./components/Error";
-import { LogOutPage } from "./components/LogOutPage";
 
 class App extends Component {
   state = {
@@ -17,7 +15,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(localStorage);
     return (
       <div className="App mainConPadLR mainConPadT">
         <Header
@@ -35,8 +32,6 @@ class App extends Component {
             />
             <Topics path="/topics" />
             <Topic path="/topics/:topicslug" />
-            <User path="/users/:username" />
-            <LogOutPage path="/logoutpage" />
             <Error path="/error" default />
           </Router>
         </div>
@@ -45,18 +40,11 @@ class App extends Component {
   }
 
   loginUserName = username => {
-    // if (localStorage.getItem("username")) {
-    //   this.setState({ loginUser: localStorage.getItem("username") });
-    // } else {
-    // }
-    // localStorage.getItem("username");
-    console.log(localStorage);
     this.setState({ loginUser: localStorage.getItem("username") });
   };
 
   logOutUserName = () => {
     localStorage.removeItem("username");
-    console.log(localStorage);
     this.setState({ loginUser: "" });
   };
 }

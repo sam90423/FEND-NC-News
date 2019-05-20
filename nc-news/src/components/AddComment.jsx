@@ -6,21 +6,21 @@ export default class AddComment extends React.Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div>
         {this.props.loginUser && (
           <div>
             <h3>Add A New Comment</h3>
             <p>Comment</p>
-            <form onSubmit={this.props.addComment}>
+            <form onSubmit={this.handleSubmit}>
               <input
                 required
                 name="commentInput"
-                onChange={this.props.handleChange}
+                onChange={this.handleChange}
                 id="body"
                 type="text"
               />
-
               <button>Add Comment</button>
             </form>
           </div>
@@ -28,6 +28,11 @@ export default class AddComment extends React.Component {
       </div>
     );
   }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.addRefreshComments(this.state.commentInput);
+  };
 
   handleChange = event => {
     this.setState({ commentInput: event.target.value });

@@ -14,14 +14,22 @@ export const SingleArticle = props => {
             <button
               disabled={props.articleVoteCount === 1}
               name="yes"
-              onClick={() => props.handleArticleVote(1)}
+              onClick={() =>
+                props.handleArticleVote(1, props.article.article_id, "articles")
+              }
             >
               YES!
             </button>
             <button
               disabled={props.articleVoteCount === -1}
               name="no"
-              onClick={() => props.handleArticleVote(-1)}
+              onClick={() =>
+                props.handleArticleVote(
+                  -1,
+                  props.article.article_id,
+                  "articles"
+                )
+              }
             >
               NO!
             </button>

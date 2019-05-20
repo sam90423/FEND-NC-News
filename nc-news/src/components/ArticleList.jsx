@@ -5,7 +5,6 @@ export const ArticleList = props => {
   return (
     <div>
       {props.articles.slice(0, 20).map(article => {
-        console.log(props.created_at);
         return (
           <div key={article.article_id} className="articleL">
             <Link to={`${article.article_id}`}>{article.title}</Link>

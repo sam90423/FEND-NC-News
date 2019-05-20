@@ -6,7 +6,9 @@ export default class Login extends React.Component {
   state = {
     userNameInput: "",
     err: null,
-    loginBox: true
+    loginBox: true,
+    name: "",
+    avatar: ""
   };
 
   render() {
@@ -15,6 +17,8 @@ export default class Login extends React.Component {
         {localStorage.getItem("username") ? (
           <div>
             <p>Welcome Back {localStorage.getItem("username")}</p>
+            <img src={this.state.avatar} alt="Avatar" />
+            <p>Name: {this.state.name}</p>
             <button onClick={this.logOutUser}>Log Out</button>
           </div>
         ) : (
@@ -42,12 +46,16 @@ export default class Login extends React.Component {
 
   loginUser = event => {
     event.preventDefault();
-    console.log("always...");
     checkValidUser(this.state.userNameInput)
       .then(user => {
+        console.log(user);
         localStorage.setItem("username", [user.username]);
         this.props.loginUserName(user.username);
-        this.setState({ loginBox: false });
+        this.setState({
+          loginBox: false,
+          name: user.name,
+          avatar: user.avatar_url
+        });
       })
       .catch(err => {
         navigate("/error", {
@@ -61,6 +69,5 @@ export default class Login extends React.Component {
     event.preventDefault();
     this.props.logOutUserName();
     this.setState({ loginBox: true, userNameInput: "" });
-    // navigate("/logoutpage");
   };
 }

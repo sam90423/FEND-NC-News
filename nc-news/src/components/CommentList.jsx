@@ -1,5 +1,4 @@
 import React from "react";
-import Axios from "axios";
 import CommentInfo from "./CommentInfo";
 
 export default class CommentList extends React.Component {
@@ -9,25 +8,14 @@ export default class CommentList extends React.Component {
     comments: []
   };
 
-  handleCommentVote = (amount, comment_id) => {
-    const url = `https://nc-news808.herokuapp.com/api/comments/${comment_id}`;
-
-    Axios.patch(url, { inc_votes: amount });
-    this.setState(prevState => {
-      return {
-        commentVoteCount: prevState.commentVoteCount + amount
-      };
-    });
-  };
   render() {
-    console.log(this.props.comments);
     return (
       <div>
         {this.props.comments.map((comment, index) => {
           return (
             <div className="comments" key={index}>
               <CommentInfo
-                deleteComment={this.props.deleteComment}
+                deleteRefreshComments={this.props.deleteRefreshComments}
                 comment={comment}
                 loginUser={this.props.loginUser}
               />

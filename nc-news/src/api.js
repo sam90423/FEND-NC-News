@@ -29,6 +29,11 @@ export const getComments = article_id => {
   });
 };
 
+export const patchDataVote = (data_id, amount, data) => {
+  const commentUrl = `https://nc-news808.herokuapp.com/api/${data}/${data_id}`;
+  return Axios.patch(commentUrl, { inc_votes: amount });
+};
+
 export const delComment = comment_id => {
   const url = `https://nc-news808.herokuapp.com/api/comments/${comment_id}`;
   return Axios.delete(url);

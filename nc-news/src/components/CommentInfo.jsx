@@ -1,17 +1,13 @@
 import React from "react";
-import Axios from "axios";
+import { patchDataVote } from "../api.js";
 
 export default class Comment extends React.Component {
   state = {
     commentVoteCount: 0
   };
 
-  handleCommentVote = (amount, comment_id) => {
-    console.log(this.props.comments);
-    console.log(comment_id);
-    const url = `https://nc-news808.herokuapp.com/api/comments/${comment_id}`;
-
-    Axios.patch(url, { inc_votes: amount });
+  handleCommentVote = (amount, comment_id, data) => {
+    patchDataVote(comment_id, amount, data);
     this.setState(prevState => {
       return {
         commentVoteCount: prevState.commentVoteCount + amount
@@ -33,7 +29,11 @@ export default class Comment extends React.Component {
                 disabled={this.state.commentVoteCount === 1}
                 name="yes"
                 onClick={() =>
-                  this.handleCommentVote(1, this.props.comment.comment_id)
+                  this.handleCommentVote(
+                    1,
+                    this.props.comment.comment_id,
+                    "comments"
+                  )
                 }
               >
                 YES!
@@ -42,7 +42,11 @@ export default class Comment extends React.Component {
                 disabled={this.state.commentVoteCount === -1}
                 name="no"
                 onClick={() =>
-                  this.handleCommentVote(-1, this.props.comment.comment_id)
+                  this.handleCommentVote(
+                    -1,
+                    this.props.comment.comment_id,
+                    "comments"
+                  )
                 }
               >
                 NO!
@@ -50,7 +54,9 @@ export default class Comment extends React.Component {
               {this.props.loginUser === this.props.comment.author && (
                 <button
                   onClick={() =>
-                    this.props.deleteComment(this.props.comment.comment_id)
+                    this.props.deleteRefreshComments(
+                      this.props.comment.comment_id
+                    )
                   }
                 >
                   Delete Comment
