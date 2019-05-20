@@ -28,7 +28,12 @@ export default class Articles extends React.Component {
             <button
               onClick={() =>
                 sortArticles("created_at").then(articles => {
-                  this.setState({ articlesList: articles, created_at: true });
+                  this.setState({
+                    articlesList: articles,
+                    created_at: true,
+                    comment_count: false,
+                    votes: false
+                  });
                 })
               }
             >
@@ -38,7 +43,12 @@ export default class Articles extends React.Component {
               <button
                 onClick={() =>
                   sortArticles("votes").then(articles => {
-                    this.setState({ articlesList: articles, votes: true });
+                    this.setState({
+                      articlesList: articles,
+                      votes: true,
+                      comment_count: false,
+                      created_at: false
+                    });
                   })
                 }
               >
@@ -52,7 +62,9 @@ export default class Articles extends React.Component {
                 sortArticles("comment_count").then(articles => {
                   this.setState({
                     articlesList: articles,
-                    comment_count: true
+                    comment_count: true,
+                    created_at: false,
+                    votes: false
                   });
                 })
               }
