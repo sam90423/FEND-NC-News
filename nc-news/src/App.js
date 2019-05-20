@@ -13,7 +13,7 @@ import { LogOutPage } from "./components/LogOutPage";
 
 class App extends Component {
   state = {
-    loginUser: ""
+    loginUser: localStorage.getItem("username")
   };
 
   render() {
@@ -44,10 +44,18 @@ class App extends Component {
   }
 
   loginUserName = username => {
-    this.setState({ loginUser: username });
+    // if (localStorage.getItem("username")) {
+    //   this.setState({ loginUser: localStorage.getItem("username") });
+    // } else {
+    // }
+    // localStorage.getItem("username");
+    console.log(localStorage);
+    this.setState({ loginUser: localStorage.getItem("username") });
   };
 
   logOutUserName = () => {
+    localStorage.removeItem("username");
+    console.log(localStorage);
     this.setState({ loginUser: "" });
   };
 }

@@ -12,7 +12,6 @@ export default class Header extends React.Component {
           loginUserName={this.props.loginUserName}
           logOutUserName={this.props.logOutUserName}
         />
-        <p>Maybe jessjelly might work?</p>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/articles">Articles</Link>

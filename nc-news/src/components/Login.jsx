@@ -13,16 +13,19 @@ export default class Login extends React.Component {
     return (
       <div className="loginCon">
         {this.state.loginBox ? (
-          <form className="login">
-            Username:{" "}
-            <input
-              value={this.state.userNameInput}
-              onChange={this.handleChange}
-              id="username"
-              type="text"
-            />
-            <button onClick={this.loginUser}>Log In</button>
-          </form>
+          <div>
+            <form className="login">
+              Username:{" "}
+              <input
+                value={this.state.userNameInput}
+                onChange={this.handleChange}
+                id="username"
+                type="text"
+              />
+              <button onClick={this.loginUser}>Log In</button>
+            </form>
+            <p>Maybe jessjelly might work?</p>
+          </div>
         ) : (
           <div>
             <p>Welcome Back {this.state.userNameInput}</p>
@@ -42,13 +45,9 @@ export default class Login extends React.Component {
     console.log("always...");
     checkValidUser(this.state.userNameInput)
       .then(user => {
-        //if (user.length === 0) return Promise.reject("Non-existent user");
-
+        localStorage.setItem("username", [user.username]);
         this.props.loginUserName(user.username);
         this.setState({ loginBox: false });
-        // navigate(`/users/${user.username}`, {
-        //   state: { directedFromLogin: true }
-        // });
       })
       .catch(err => {
         navigate("/error", {
