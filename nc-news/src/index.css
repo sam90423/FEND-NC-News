@@ -43,6 +43,23 @@ code {
   margin: 5px;
 }
 
+.buttonsCon {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: end;
+}
+.sortButton1 {
+  grid-column-start: 1;
+}
+
+.sortButton2 {
+  grid-column-start: 2;
+}
+
+.sortButton3 {
+  grid-column-start: 3;
+}
+
 .articleL {
   margin: 10px;
 }

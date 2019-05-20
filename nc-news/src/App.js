@@ -22,6 +22,7 @@ class App extends Component {
         <Header
           loginUserName={this.loginUserName}
           logOutUserName={this.logOutUserName}
+          loginUser={this.state.loginUser}
         />
         <div className="content">
           <Router>

@@ -8,6 +8,7 @@ export default class Header extends React.Component {
       <div>
         <h1>NC-News</h1>
         <Login
+          loginUser={this.props.loginUser}
           loginUserName={this.props.loginUserName}
           logOutUserName={this.props.logOutUserName}
         />

@@ -4,19 +4,23 @@ import { getTopics } from "../api.js";
 
 export default class Students extends React.Component {
   state = {
-    topicsList: null
+    topicsList: null,
+    loading: true
   };
   componentDidMount() {
     getTopics().then(topics => {
-      this.setState({ topicsList: topics });
+      this.setState({ topicsList: topics, loading: false });
     });
   }
   render() {
     return (
       <div>
         <h2>Topics</h2>
-
-        {this.state.topicsList && <TopicList topics={this.state.topicsList} />}
+        {this.state.loading ? (
+          <p>Loading...</p>
+        ) : (
+          <TopicList topics={this.state.topicsList} />
+        )}
       </div>
     );
   }

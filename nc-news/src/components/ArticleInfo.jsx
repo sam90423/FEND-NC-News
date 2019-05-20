@@ -15,12 +15,13 @@ export default class Article extends React.Component {
     articleVoteCount: 0,
     commentVoteCount: 0,
     voteLoading: true,
-    voteError: null
+    voteError: null,
+    loading: true
   };
   componentDidMount() {
     getArticleById(this.props.articleid)
       .then(article => {
-        this.setState({ articleInfo: article });
+        this.setState({ articleInfo: article, loading: false });
       })
       .catch(err => {
         navigate("/error", {
@@ -41,29 +42,33 @@ export default class Article extends React.Component {
         <h1 className="title">Article</h1>
         <div>
           <div>
-            <div>
-              <SingleArticle
-                loginUser={this.props.loginUser}
-                article={this.state.articleInfo}
-                articleid={this.props.articleid}
-                handleArticleVote={this.handleArticleVote}
-                articleVoteCount={this.state.articleVoteCount}
-              />
+            {this.state.loading ? (
+              <h3>Loading...</h3>
+            ) : (
+              <div>
+                <SingleArticle
+                  loginUser={this.props.loginUser}
+                  article={this.state.articleInfo}
+                  articleid={this.props.articleid}
+                  handleArticleVote={this.handleArticleVote}
+                  articleVoteCount={this.state.articleVoteCount}
+                />
 
-              <h3 className="title">Comments:</h3>
-              <AddComment
-                loginUser={this.props.loginUser}
-                articleid={this.props.articleid}
-                addComment={this.addComment}
-                handleChange={this.handleChange}
-              />
+                <h3 className="title">Comments:</h3>
+                <AddComment
+                  loginUser={this.props.loginUser}
+                  articleid={this.props.articleid}
+                  addComment={this.addComment}
+                  handleChange={this.handleChange}
+                />
 
-              <CommentList
-                deleteComment={this.deleteComment}
-                comments={this.state.commentList}
-                loginUser={this.props.loginUser}
-              />
-            </div>
+                <CommentList
+                  deleteComment={this.deleteComment}
+                  comments={this.state.commentList}
+                  loginUser={this.props.loginUser}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
