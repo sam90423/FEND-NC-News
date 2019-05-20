@@ -12,7 +12,12 @@ export default class Login extends React.Component {
   render() {
     return (
       <div className="loginCon">
-        {this.state.loginBox ? (
+        {localStorage.getItem("username") ? (
+          <div>
+            <p>Welcome Back {localStorage.getItem("username")}</p>
+            <button onClick={this.logOutUser}>Log Out</button>
+          </div>
+        ) : (
           <div>
             <form className="login">
               Username:{" "}
@@ -25,11 +30,6 @@ export default class Login extends React.Component {
               <button onClick={this.loginUser}>Log In</button>
             </form>
             <p>Maybe jessjelly might work?</p>
-          </div>
-        ) : (
-          <div>
-            <p>Welcome Back {this.state.userNameInput}</p>
-            <button onClick={this.logOutUser}>Log Out</button>
           </div>
         )}
       </div>
