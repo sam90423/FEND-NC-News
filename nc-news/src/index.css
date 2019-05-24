@@ -45,18 +45,19 @@ code {
 
 .buttonsCon {
   display: grid;
+  grid-column-gap: 15px;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-items: end;
+  justify-items: center;
 }
-.sortButton1 {
+.button1 {
   grid-column-start: 1;
 }
 
-.sortButton2 {
+.button2 {
   grid-column-start: 2;
 }
 
-.sortButton3 {
+.button3 {
   grid-column-start: 3;
 }
 
@@ -66,4 +67,8 @@ code {
 
 .title {
   padding-left: 1em;
+}
+
+.link {
+  text-decoration: none;
 }

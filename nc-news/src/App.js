@@ -4,9 +4,9 @@ import Header from "./components/Header";
 import { Router } from "@reach/router";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
-import Article from "./components/ArticleInfo";
+import Article from "./components/ArticlePage";
 import Topics from "./components/Topics";
-import Topic from "./components/TopicInfo";
+import Topic from "./components/TopicPage";
 import Error from "./components/Error";
 
 class App extends Component {
@@ -45,6 +45,8 @@ class App extends Component {
 
   logOutUserName = () => {
     localStorage.removeItem("username");
+    localStorage.removeItem("avatar");
+    localStorage.removeItem("name");
     this.setState({ loginUser: "" });
   };
 }

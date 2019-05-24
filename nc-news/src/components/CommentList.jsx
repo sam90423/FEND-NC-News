@@ -1,5 +1,5 @@
 import React from "react";
-import CommentInfo from "./CommentInfo";
+import CommentInfo from "./CommentPage";
 
 export default class CommentList extends React.Component {
   state = {

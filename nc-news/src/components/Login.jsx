@@ -1,6 +1,7 @@
 import React from "react";
 import { navigate } from "@reach/router";
 import { checkValidUser } from "../api.js";
+// import Button from "@material-ui/core/Button";
 
 export default class Login extends React.Component {
   state = {
@@ -8,17 +9,34 @@ export default class Login extends React.Component {
     err: null,
     loginBox: true,
     name: "",
-    avatar: ""
+    avatar: "",
+    userName: ""
   };
 
+  componentDidMount() {
+    const userName = localStorage.getItem("username");
+    const avatar = localStorage.getItem("avatar");
+    const name = localStorage.getItem("name");
+    this.setState({ userName, avatar, name });
+  }
+
   render() {
+    console.log(localStorage);
+    const { userName, avatar, name } = this.state;
     return (
       <div className="loginCon">
-        {localStorage.getItem("username") ? (
+        {localStorage.username ? (
           <div>
-            <p>Welcome Back {localStorage.getItem("username")}</p>
-            <img src={this.state.avatar} alt="Avatar" />
-            <p>Name: {this.state.name}</p>
+            <p>Welcome Back {userName}</p>
+            <img src={avatar} alt="Avatar" />
+            <p>Name: {name}</p>
+            {/* <Button
+              onClick={this.logOutUser}
+              variant="outlined"
+              color="primary"
+            >
+              Log Out
+            </Button> */}
             <button onClick={this.logOutUser}>Log Out</button>
           </div>
         ) : (
@@ -31,6 +49,13 @@ export default class Login extends React.Component {
                 id="username"
                 type="text"
               />
+              {/* <Button
+                onClick={this.loginUser}
+                variant="outlined"
+                color="secondary"
+              >
+                Log in
+              </Button> */}
               <button onClick={this.loginUser}>Log In</button>
             </form>
             <p>Maybe jessjelly might work?</p>
@@ -50,6 +75,8 @@ export default class Login extends React.Component {
       .then(user => {
         console.log(user);
         localStorage.setItem("username", [user.username]);
+        localStorage.setItem("avatar", [user.avatar_url]);
+        localStorage.setItem("name", [user.name]);
         this.props.loginUserName(user.username);
         this.setState({
           loginBox: false,
