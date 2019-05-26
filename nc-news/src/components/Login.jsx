@@ -22,7 +22,7 @@ export default class Login extends React.Component {
 
   render() {
     const { userName, avatar, name } = this.state;
-    console.log(userName);
+
     return (
       <div>
         {localStorage.username ? (
