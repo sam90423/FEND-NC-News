@@ -22,6 +22,7 @@ export default class Login extends React.Component {
 
   render() {
     const { userName, avatar, name } = this.state;
+    console.log(userName);
     return (
       <div>
         {localStorage.username ? (
@@ -70,7 +71,8 @@ export default class Login extends React.Component {
         this.setState({
           loginBox: false,
           name: user.name,
-          avatar: user.avatar_url
+          avatar: user.avatar_url,
+          userName: user.username
         });
       })
       .catch(err => {
