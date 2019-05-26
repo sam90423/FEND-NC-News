@@ -21,42 +21,32 @@ export default class Login extends React.Component {
   }
 
   render() {
-    console.log(localStorage);
     const { userName, avatar, name } = this.state;
     return (
-      <div className="loginCon">
+      <div>
         {localStorage.username ? (
-          <div>
-            <p>Welcome Back {userName}</p>
-            <img src={avatar} alt="Avatar" />
-            <p>Name: {name}</p>
-            {/* <Button
-              onClick={this.logOutUser}
-              variant="outlined"
-              color="primary"
-            >
+          <div className="loggedIn">
+            <p className="loginUserName">Welcome Back {name}</p>
+            <img className="loginAvatar" src={avatar} alt="Avatar" />
+            <p className="loginName">Username: {userName}</p>
+            <button className="loginLogOutButton" onClick={this.logOutUser}>
               Log Out
-            </Button> */}
-            <button onClick={this.logOutUser}>Log Out</button>
+            </button>
           </div>
         ) : (
           <div>
-            <form className="login">
-              Username:{" "}
+            <form className="loginBox">
               <input
                 value={this.state.userNameInput}
                 onChange={this.handleChange}
                 id="username"
                 type="text"
+                className="inputBox"
+                placeholder="Username"
               />
-              {/* <Button
-                onClick={this.loginUser}
-                variant="outlined"
-                color="secondary"
-              >
-                Log in
-              </Button> */}
-              <button onClick={this.loginUser}>Log In</button>
+              <button className="loginLogOutButton" onClick={this.loginUser}>
+                Log In
+              </button>
             </form>
             <p>Maybe jessjelly might work?</p>
           </div>
@@ -73,7 +63,6 @@ export default class Login extends React.Component {
     event.preventDefault();
     checkValidUser(this.state.userNameInput)
       .then(user => {
-        console.log(user);
         localStorage.setItem("username", [user.username]);
         localStorage.setItem("avatar", [user.avatar_url]);
         localStorage.setItem("name", [user.name]);

@@ -16,7 +16,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App mainConPadLR mainConPadT">
+      <div className="App mainConPadLR">
         <Header
           loginUserName={this.loginUserName}
           logOutUserName={this.logOutUserName}

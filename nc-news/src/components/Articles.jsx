@@ -1,7 +1,6 @@
 import React from "react";
 import { ArticleList } from "./ArticleList";
 import { getArticles, sortArticles } from "../api.js";
-import Button from "@material-ui/core/Button";
 
 export default class Articles extends React.Component {
   state = {
@@ -25,55 +24,7 @@ export default class Articles extends React.Component {
         <h2 className="title">Articles</h2>
 
         <div className="buttonsCon">
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() =>
-              sortArticles("votes").then(articles => {
-                this.setState({
-                  articlesList: articles,
-                  votes: true,
-                  comment_count: false,
-                  created_at: false
-                });
-              })
-            }
-          >
-            Most Votes
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() =>
-              sortArticles("comment_count").then(articles => {
-                this.setState({
-                  articlesList: articles,
-                  comment_count: true,
-                  created_at: false,
-                  votes: false
-                });
-              })
-            }
-          >
-            Most Comments
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() =>
-              sortArticles("created_at").then(articles => {
-                this.setState({
-                  articlesList: articles,
-                  created_at: true,
-                  comment_count: false,
-                  votes: false
-                });
-              })
-            }
-          >
-            Most Recent
-          </Button>
-          {/* <div className="sortButton1">
+          <div>
             <button
               onClick={() =>
                 sortArticles("created_at").then(articles => {
@@ -86,10 +37,10 @@ export default class Articles extends React.Component {
                 })
               }
             >
-              Most Recent
+              Most <br /> Recent
             </button>
           </div>
-          <div className="sortButton2">
+          <div>
             <button
               onClick={() =>
                 sortArticles("votes").then(articles => {
@@ -102,11 +53,13 @@ export default class Articles extends React.Component {
                 })
               }
             >
-              Most Votes
+              Most
+              <br />
+              Votes
             </button>
           </div>
 
-          <div className="sortButton3">
+          <div>
             <button
               onClick={() =>
                 sortArticles("comment_count").then(articles => {
@@ -119,10 +72,11 @@ export default class Articles extends React.Component {
                 })
               }
             >
-              Most Comments
+              Most <br /> Comments
             </button>
-          </div> */}
+          </div>
         </div>
+        <hr className="hr" />
         {this.state.loading ? (
           <p>Loading...</p>
         ) : (

@@ -4,10 +4,10 @@ export const SingleArticle = props => {
   return (
     <div>
       <div>
-        <p>Title: {props.article.title}</p>
-        <p>Topic: {props.article.topic}</p>
-        <p>Author: {props.article.author}</p>
-        <p>Body: {props.article.body}</p>
+        <p>{props.article.title}</p>
+        <p>{props.article.topic}</p>
+        <p>{props.article.author}</p>
+        <p>{props.article.body}</p>
         <p>Votes: {props.article.votes + props.articleVoteCount}</p>
         {props.loginUser && (
           <div>

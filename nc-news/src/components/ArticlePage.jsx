@@ -46,6 +46,7 @@ export default class Article extends React.Component {
             ) : (
               <div>
                 <h1 className="title">Article</h1>
+                <hr className="hr" />
                 <SingleArticle
                   loginUser={this.props.loginUser}
                   article={this.state.articleInfo}
@@ -55,6 +56,7 @@ export default class Article extends React.Component {
                 />
 
                 <h3 className="title">Comments:</h3>
+                <hr className="hr" />
                 <AddComment
                   commentInput={this.state.commentInput}
                   loginUser={this.props.loginUser}

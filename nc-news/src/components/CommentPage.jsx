@@ -18,9 +18,9 @@ export default class Comment extends React.Component {
     return (
       <div>
         <div className="comments">
-          <p>Created At: {this.props.comment.created_at}</p>
-          <p>Author: {this.props.comment.author}</p>
-          <p>Body: {this.props.comment.body}</p>
+          <p>{this.props.comment.created_at}</p>
+          <p>{this.props.comment.author}</p>
+          <p>{this.props.comment.body}</p>
 
           <p>Votes: {this.props.comment.votes + this.state.commentVoteCount}</p>
           {this.props.loginUser && (
@@ -64,6 +64,7 @@ export default class Comment extends React.Component {
               )}
             </div>
           )}
+          <hr className="articleList" />
         </div>
       </div>
     );

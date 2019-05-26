@@ -18,19 +18,56 @@ code {
   padding-right: 1em;
 }
 
-.mainConPadT {
-  padding-top: 2em;
+.hr {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 4em;
+  margin-right: 4em;
+  border-style: inset;
+  border-width: 1px;
+  border: 1px solid black;
 }
 
-.loginCon {
+input {
+  padding: 3px 5px;
+  margin-right: 2px;
   border: 2px solid black;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  font-weight: bold;
 }
 
-.login {
-  grid-column-start: 3;
-  border: 2px solid blue;
+textarea {
+  border: 2px solid black;
+  font-weight: bold;
+}
+
+.loggedIn {
+  padding-bottom: 10px;
+}
+
+input:focus {
+  padding: 3px 5px;
+  margin-right: 2px;
+  border: 2px solid grey;
+  font-weight: bold;
+  outline: none;
+}
+
+button {
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 3px 10px;
+  font-weight: bold;
+  outline: none;
+}
+
+button:hover {
+  color: red;
+}
+
+button:focus {
+  color: red;
 }
 
 .content {
@@ -43,6 +80,29 @@ code {
   margin: 5px;
 }
 
+.headerCon {
+  padding-top: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.topBar {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.title {
+  grid-column-start: 1;
+}
+
+.login {
+  grid-column-start: 3;
+}
+
 .buttonsCon {
   display: grid;
   grid-column-gap: 15px;
@@ -51,6 +111,10 @@ code {
 }
 .button1 {
   grid-column-start: 1;
+  background-color: black;
+  color: white;
+  padding: 3px 5px;
+  font-weight: bold;
 }
 
 .button2 {
@@ -65,10 +129,37 @@ code {
   margin: 10px;
 }
 
+.articles {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.articles:focus {
+  color: red;
+}
+
+.articles:hover {
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+.articleList {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 8em;
+  margin-right: 8em;
+  border-style: inset;
+  border-width: 1px;
+}
+
 .title {
   padding-left: 1em;
 }
 
 .link {
   text-decoration: none;
+  color: black;
+  font-weight: bold;
 }

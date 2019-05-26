@@ -6,7 +6,6 @@ export default class AddComment extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
         {this.props.loginUser && (
@@ -14,13 +13,16 @@ export default class AddComment extends React.Component {
             <h3>Add A New Comment</h3>
             <p>Comment</p>
             <form onSubmit={this.handleSubmit}>
-              <input
+              <textarea
                 required
+                rows="4"
+                cols="40"
                 name="commentInput"
                 onChange={this.handleChange}
                 id="body"
                 type="text"
               />
+              <br />
               <button>Add Comment</button>
             </form>
           </div>

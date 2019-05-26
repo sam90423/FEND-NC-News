@@ -16,6 +16,7 @@ export default class Students extends React.Component {
     return (
       <div>
         <h2>Topics</h2>
+        <hr className="hr" />
         {this.state.loading ? (
           <p>Loading...</p>
         ) : (

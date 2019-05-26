@@ -28,14 +28,20 @@ export default class Topic extends React.Component {
         ) : (
           <div>
             <h1 className="title">Topic</h1>
+            <hr className="hr" />
             <h2>{this.props.topicslug}</h2>
             <h1 className="title">Articles:</h1>
+            <hr className="hr" />
             {this.state.relArticlesInfo.map((article, index) => {
               return (
                 <div className="articles" key={index}>
-                  <Link to={`/articles/${article.article_id}`}>
+                  <Link
+                    className="articles"
+                    to={`/articles/${article.article_id}`}
+                  >
                     {article.title}
                   </Link>
+                  <hr className="articleList" />
                 </div>
               );
             })}
