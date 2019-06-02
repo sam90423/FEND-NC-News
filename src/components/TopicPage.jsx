@@ -2,7 +2,7 @@ import React from "react";
 import { getArticlesByTopic } from "../api.js";
 import { Link, navigate } from "@reach/router";
 
-export default class Topic extends React.Component {
+export default class TopicPage extends React.Component {
   state = {
     topicInfo: [],
     relArticlesInfo: [],

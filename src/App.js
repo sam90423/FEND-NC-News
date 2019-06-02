@@ -4,9 +4,9 @@ import Header from "./components/Header";
 import { Router } from "@reach/router";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
-import Article from "./components/ArticlePage";
+import ArticlePage from "./components/ArticlePage";
 import Topics from "./components/Topics";
-import Topic from "./components/TopicPage";
+import TopicPage from "./components/TopicPage";
 import Error from "./components/Error";
 
 class App extends Component {
@@ -26,12 +26,12 @@ class App extends Component {
           <Router>
             <Home path="/" />
             <Articles path="/articles" />
-            <Article
+            <ArticlePage
               path="/articles/:articleid"
               loginUser={this.state.loginUser}
             />
             <Topics path="/topics" />
-            <Topic path="/topics/:topicslug" />
+            <TopicPage path="/topics/:topicslug" />
             <Error path="/error" default />
           </Router>
         </div>

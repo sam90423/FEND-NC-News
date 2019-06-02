@@ -11,7 +11,7 @@ import {
   patchDataVote
 } from "../api.js";
 
-export default class Article extends React.Component {
+export default class ArticlePage extends React.Component {
   state = {
     commentList: [],
     commentInput: "",
@@ -40,40 +40,38 @@ export default class Article extends React.Component {
     return (
       <div>
         <div>
-          <div>
-            {this.state.loading ? (
-              <h3>Loading...</h3>
-            ) : (
-              <div>
-                <h1 className="title">Article</h1>
-                <hr className="hr" />
-                <SingleArticle
-                  loginUser={this.props.loginUser}
-                  article={this.state.articleInfo}
-                  articleid={this.props.articleid}
-                  handleArticleVote={this.handleArticleVote}
-                  articleVoteCount={this.state.articleVoteCount}
-                />
+          {this.state.loading ? (
+            <h3>Loading...</h3>
+          ) : (
+            <div>
+              <h1 className="title">Article</h1>
+              <hr className="hr" />
+              <SingleArticle
+                loginUser={this.props.loginUser}
+                article={this.state.articleInfo}
+                articleid={this.props.articleid}
+                handleArticleVote={this.handleArticleVote}
+                articleVoteCount={this.state.articleVoteCount}
+              />
 
-                <h3 className="title">Comments:</h3>
-                <hr className="hr" />
-                <AddComment
-                  commentInput={this.state.commentInput}
-                  loginUser={this.props.loginUser}
-                  articleid={this.props.articleid}
-                  addRefreshComments={this.addRefreshComments}
-                  handleChange={this.handleChange}
-                  addCommentStr={this.addCommentStr}
-                />
+              <h3 className="title">Comments:</h3>
+              <hr className="hr" />
+              <AddComment
+                commentInput={this.state.commentInput}
+                loginUser={this.props.loginUser}
+                articleid={this.props.articleid}
+                addRefreshComments={this.addRefreshComments}
+                handleChange={this.handleChange}
+                addCommentStr={this.addCommentStr}
+              />
 
-                <CommentList
-                  deleteRefreshComments={this.deleteRefreshComments}
-                  comments={this.state.commentList}
-                  loginUser={this.props.loginUser}
-                />
-              </div>
-            )}
-          </div>
+              <CommentList
+                deleteRefreshComments={this.deleteRefreshComments}
+                comments={this.state.commentList}
+                loginUser={this.props.loginUser}
+              />
+            </div>
+          )}
         </div>
       </div>
     );

@@ -18,7 +18,7 @@ export default class Comment extends React.Component {
     return (
       <div>
         <div className="comments">
-          <p>{this.props.comment.created_at}</p>
+          <p>{this.props.comment.created_at.slice(0, 10)}</p>
           <p>{this.props.comment.author}</p>
           <p>{this.props.comment.body}</p>
 

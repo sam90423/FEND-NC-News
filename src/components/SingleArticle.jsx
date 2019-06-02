@@ -7,6 +7,7 @@ export const SingleArticle = props => {
         <p>{props.article.title}</p>
         <p>{props.article.topic}</p>
         <p>{props.article.author}</p>
+        <p>{props.article.created_at.slice(0, 10)}</p>
         <p>{props.article.body}</p>
         <p>Votes: {props.article.votes + props.articleVoteCount}</p>
         {props.loginUser && (
