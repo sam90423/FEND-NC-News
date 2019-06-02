@@ -1,5 +1,21 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Netlify Link
+
+https://nc-news808.netlify.com
+
+## Back-End Heroku Link
+
+https://nc-news808.herokuapp.com
+
+## Description
+
+This is the front-end to my nc-news project where users can view articles, vote, and comment on them. Its build mainly using React with Material UI, axios and @reach/router
+
+## End-Points
+
+The end-points can be viewed in the src/api.js file
+
 ## Available Scripts
 
 In the project directory, you can run:
