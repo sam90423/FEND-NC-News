@@ -9,7 +9,7 @@ export default class AddComment extends React.Component {
     return (
       <div>
         {this.props.loginUser && (
-          <div>
+          <div className="centerText">
             <h3>Add A New Comment</h3>
             <p>Comment</p>
             <form onSubmit={this.handleSubmit}>

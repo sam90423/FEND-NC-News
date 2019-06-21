@@ -26,11 +26,11 @@ export default class TopicPage extends React.Component {
         {this.state.loading ? (
           <p>Loading...</p>
         ) : (
-          <div>
-            <h1 className="title">Topic</h1>
+          <div className="centerText">
+            <h1>Topic</h1>
             <hr className="hr" />
             <h2>{this.props.topicslug}</h2>
-            <h1 className="title">Articles:</h1>
+            <h1>Articles:</h1>
             <hr className="hr" />
             {this.state.relArticlesInfo.map((article, index) => {
               return (

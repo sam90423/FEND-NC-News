@@ -1,5 +1,5 @@
 import React from "react";
-import CommentInfo from "./CommentPage";
+import CommentPage from "./CommentPage";
 
 export default class CommentList extends React.Component {
   state = {
@@ -13,8 +13,8 @@ export default class CommentList extends React.Component {
       <div>
         {this.props.comments.map((comment, index) => {
           return (
-            <div className="comments" key={index}>
-              <CommentInfo
+            <div className="centerText" key={index}>
+              <CommentPage
                 deleteRefreshComments={this.props.deleteRefreshComments}
                 comment={comment}
                 loginUser={this.props.loginUser}

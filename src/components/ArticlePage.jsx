@@ -44,7 +44,7 @@ export default class ArticlePage extends React.Component {
             <h3>Loading...</h3>
           ) : (
             <div>
-              <h1 className="title">Article</h1>
+              <h1 className="centerText">Article</h1>
               <hr className="hr" />
               <SingleArticle
                 loginUser={this.props.loginUser}
@@ -54,7 +54,7 @@ export default class ArticlePage extends React.Component {
                 articleVoteCount={this.state.articleVoteCount}
               />
 
-              <h3 className="title">Comments:</h3>
+              <h3 className="centerText">Comments:</h3>
               <hr className="hr" />
               <AddComment
                 commentInput={this.state.commentInput}

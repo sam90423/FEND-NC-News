@@ -20,7 +20,7 @@ export default class Articles extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="centerText">
         <h2 className="title">Articles</h2>
 
         <div className="buttonsCon">

@@ -36,6 +36,10 @@ input {
   font-weight: bold;
 }
 
+.centerText {
+  text-align: center;
+}
+
 textarea {
   border: 2px solid black;
   font-weight: bold;
@@ -144,6 +148,7 @@ button:focus {
   text-decoration: none;
   color: black;
   font-weight: bold;
+  text-align: center;
 }
 
 .articles:focus {
@@ -163,10 +168,6 @@ button:focus {
   margin-right: 8em;
   border-style: inset;
   border-width: 1px;
-}
-
-.title {
-  padding-left: 1em;
 }
 
 .link {

@@ -2,10 +2,10 @@ import React from "react";
 
 export const SingleArticle = props => {
   return (
-    <div>
+    <div className="centerText">
       <div>
-        <p>{props.article.title}</p>
-        <p>{props.article.topic}</p>
+        <h1>{props.article.title}</h1>
+        <h3>{props.article.topic}</h3>
         <p>{props.article.author}</p>
         <p>{props.article.created_at.slice(0, 10)}</p>
         <p>{props.article.body}</p>

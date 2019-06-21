@@ -3,7 +3,7 @@ import React from "react";
 export default class Home extends React.Component {
   render() {
     return (
-      <div>
+      <div className="centerText">
         <h1>Welcome!</h1>
         <p>
           Hey! This is a news website that definatly has real articles about

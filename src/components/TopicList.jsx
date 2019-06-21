@@ -8,7 +8,7 @@ export const TopicList = props => {
         return (
           <div key={topic.slug} className="articleL">
             <Link className="articles" to={`${topic.slug}`}>
-              {topic.slug}
+              <h2>{topic.slug}</h2>
             </Link>
             <hr className="articleList" />
           </div>
