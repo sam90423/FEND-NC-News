@@ -26,6 +26,7 @@ export default class Articles extends React.Component {
         <div className="buttonsCon">
           <div>
             <button
+              className="sortButton"
               onClick={() =>
                 sortArticles("created_at").then(articles => {
                   this.setState({
@@ -42,6 +43,7 @@ export default class Articles extends React.Component {
           </div>
           <div>
             <button
+              className="sortButton"
               onClick={() =>
                 sortArticles("votes").then(articles => {
                   this.setState({
@@ -61,6 +63,7 @@ export default class Articles extends React.Component {
 
           <div>
             <button
+              className="sortButton"
               onClick={() =>
                 sortArticles("comment_count").then(articles => {
                   this.setState({

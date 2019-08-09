@@ -20,14 +20,13 @@ export default class Login extends React.Component {
   }
 
   render() {
-    const { userName, avatar, name } = this.state;
+    const { userName, avatar } = this.state;
 
     return (
       <div>
         {localStorage.username ? (
           <div className="loggedIn">
             <div className="avatarWel">
-              <p className="loginName">Welcome Back {name}</p>
               <img
                 style={{ width: "50px", height: "50px" }}
                 className="loginAvatar"
@@ -35,8 +34,8 @@ export default class Login extends React.Component {
                 alt="Avatar"
               />
             </div>
-            <p className="loginName">Username: {userName}</p>
-            <button className="loginLogOutButton" onClick={this.logOutUser}>
+            <p className="loginName">Welcome back {userName}</p>
+            <button className="pageButton" onClick={this.logOutUser}>
               Log Out
             </button>
           </div>
@@ -51,11 +50,11 @@ export default class Login extends React.Component {
                 className="inputBox"
                 placeholder="Username"
               />
-              <button className="loginLogOutButton" onClick={this.loginUser}>
+              <button className="pageButton" onClick={this.loginUser}>
                 Log In
               </button>
             </form>
-            <p>Maybe jessjelly might work?</p>
+            <p className="loginName">Maybe jessjelly might work?</p>
           </div>
         )}
       </div>

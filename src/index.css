@@ -38,6 +38,7 @@ input {
 
 .centerText {
   text-align: center;
+  color: black;
 }
 
 textarea {
@@ -51,14 +52,15 @@ textarea {
 
 .loginName {
   margin: 2px;
+  color: white;
 }
 
-.avatarWel {
+/* .avatarWel {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   margin-bottom: 2px;
-}
+} */
 
 input:focus {
   padding: 3px 5px;
@@ -68,17 +70,20 @@ input:focus {
   outline: none;
 }
 
-button {
+.pageButton {
   border: none;
   background-color: black;
   color: white;
   padding: 3px 10px;
   font-weight: bold;
   outline: none;
+  width: 90px;
+  height: 40px;
 }
 
 button:hover {
   color: red;
+  border-bottom: 2px solid red;
 }
 
 button:focus {
@@ -91,49 +96,76 @@ button:focus {
 }
 
 .sortButton {
+  border: none;
   text-align: center;
   margin: 5px;
+  background-color: white;
+  color: black;
+  padding: 3px 10px;
+  font-weight: bold;
+  outline: none;
+  width: 90px;
+  height: 40px;
 }
 
 .headerCon {
   padding-top: 1em;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
 }
 
 .topBar {
-  background-color: white;
+  background-color: black;
   position: sticky;
   top: 0;
   padding-bottom: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
+}
+
+.topTitle {
+  grid-column-start: 1;
+  color: white;
+  padding-top: 15px;
 }
 
 .title {
-  grid-column-start: 1;
+  color: black;
+  padding-top: 15px;
+}
+
+.buttonsCon {
+  grid-column-start: 2;
+  display: grid;
+  grid-column-gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* grid-template-columns: 80px 80px 80px; */
+  align-items: center;
+  justify-items: center;
 }
 
 .login {
   grid-column-start: 3;
 }
-
-.buttonsCon {
-  display: grid;
-  grid-column-gap: 15px;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
-}
 .button1 {
   grid-column-start: 1;
-  background-color: black;
   color: white;
+  background-color: black;
   padding: 3px 5px;
   font-weight: bold;
 }
 
+.button1:focus {
+  color: red;
+  transition: color 0.2s;
+}
+
 .button2 {
   grid-column-start: 2;
+  color: red;
+}
+.button2:focus {
+  color: red;
 }
 
 .button3 {
@@ -172,6 +204,22 @@ button:focus {
 
 .link {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: bold;
+  transition: color 0.5s;
+}
+
+.link:hover {
+  color: red;
+  transition: color 0.5s;
+}
+
+.link:focus {
+  color: red;
+  transition: color 0.2s;
+}
+
+.centerCon {
+  justify-self: center;
+  padding-left: 400px;
 }
