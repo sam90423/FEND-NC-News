@@ -16,13 +16,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App mainConPadLR">
+      <div className="App">
         <Header
           loginUserName={this.loginUserName}
           logOutUserName={this.logOutUserName}
           loginUser={this.state.loginUser}
         />
-        <div className="content">
+        <div className="content mainConPadLR">
           <Router>
             <Home path="/" />
             <Articles path="/articles" />

@@ -28,6 +28,7 @@ export default class Comment extends React.Component {
               <button
                 disabled={this.state.commentVoteCount === 1}
                 name="yes"
+                className="sortButton"
                 onClick={() =>
                   this.handleCommentVote(
                     1,
@@ -41,6 +42,7 @@ export default class Comment extends React.Component {
               <button
                 disabled={this.state.commentVoteCount === -1}
                 name="no"
+                className="sortButton"
                 onClick={() =>
                   this.handleCommentVote(
                     -1,
@@ -53,6 +55,7 @@ export default class Comment extends React.Component {
               </button>{" "}
               {this.props.loginUser === this.props.comment.author && (
                 <button
+                  className="sortButton"
                   onClick={() =>
                     this.props.deleteRefreshComments(
                       this.props.comment.comment_id

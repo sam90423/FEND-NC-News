@@ -23,7 +23,7 @@ export default class AddComment extends React.Component {
                 type="text"
               />
               <br />
-              <button>Add Comment</button>
+              <button className="sortButton">Add Comment</button>
             </form>
           </div>
         )}

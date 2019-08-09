@@ -15,15 +15,17 @@ export const SingleArticle = props => {
             <button
               disabled={props.articleVoteCount === 1}
               name="yes"
+              className="sortButton"
               onClick={() =>
                 props.handleArticleVote(1, props.article.article_id, "articles")
               }
             >
-              YES!
+              LIKE
             </button>
             <button
               disabled={props.articleVoteCount === -1}
               name="no"
+              className="sortButton"
               onClick={() =>
                 props.handleArticleVote(
                   -1,
@@ -32,7 +34,7 @@ export const SingleArticle = props => {
                 )
               }
             >
-              NO!
+              DISLIKE
             </button>
           </div>
         )}
