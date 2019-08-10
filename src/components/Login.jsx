@@ -26,7 +26,7 @@ export default class Login extends React.Component {
       <div>
         {localStorage.username ? (
           <div className="loggedIn">
-            <div className="avatarWel">
+            <div className="loginIcon">
               <img
                 style={{ width: "50px", height: "50px" }}
                 className="loginAvatar"

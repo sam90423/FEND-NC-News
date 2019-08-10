@@ -23,7 +23,7 @@ export default class Articles extends React.Component {
       <div className="centerText">
         <h2 className="title">Articles</h2>
 
-        <div className="buttonsCon">
+        <div className="sortButtonsCon">
           <div>
             <button
               className="sortButton"
@@ -80,6 +80,7 @@ export default class Articles extends React.Component {
           </div>
         </div>
         <hr className="hr" />
+
         {this.state.loading ? (
           <p>Loading...</p>
         ) : (

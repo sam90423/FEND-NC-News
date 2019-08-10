@@ -15,7 +15,7 @@ export default class Students extends React.Component {
   render() {
     return (
       <div className="centerText">
-        <h2>Topics</h2>
+        <h2 className="title">Topics</h2>
         <hr className="hr" />
         {this.state.loading ? (
           <p>Loading...</p>
