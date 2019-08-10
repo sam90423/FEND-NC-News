@@ -29,22 +29,28 @@ export default class TopicPage extends React.Component {
           <div className="centerText">
             <h1>Topic</h1>
             <hr className="hr" />
-            <h2>{this.props.topicslug}</h2>
+            <h2 className="title">{this.props.topicslug}</h2>
             <h1>Articles:</h1>
             <hr className="hr" />
-            {this.state.relArticlesInfo.map((article, index) => {
-              return (
-                <div className="articles" key={index}>
-                  <Link
-                    className="articles"
-                    to={`/articles/${article.article_id}`}
-                  >
-                    {article.title}
-                  </Link>
-                  <hr className="articleList" />
-                </div>
-              );
-            })}
+            <div className="articleCardsCon">
+              {this.state.relArticlesInfo.map((article, index) => {
+                return (
+                  <div className="articleCard" key={index}>
+                    <Link
+                      className="articles"
+                      to={`/articles/${article.article_id}`}
+                    >
+                      <h3> {article.title}</h3>
+                      <hr className="cardHr" />
+                      {article.author}
+                    </Link>
+                    <p>Date posted: {article.created_at.slice(0, 10)}</p>
+                    <p>Comment count: {article.comment_count}</p>
+                    <p>Votes: {article.votes}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
       </div>
