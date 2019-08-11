@@ -256,6 +256,7 @@ button:focus {
 }
 
 .articleCard {
+  text-decoration: none;
   border-radius: 4px;
   background-color: lightgray;
   transition: all 0.3s ease-in-out;
@@ -281,4 +282,8 @@ button:focus {
   grid-template-columns: 1fr 1fr;
   width: 91%;
   margin-left: 60px;
+}
+
+.cardLink {
+  text-decoration: none;
 }
