@@ -25,7 +25,9 @@ export const ArticleList = props => {
 
               <hr className="cardHr" />
               <h3 className="articles">By: {article.author}</h3>
-              <h3 className="articles">Date created: {article.created_at}</h3>
+              <h3 className="articles">
+                Date created: {article.created_at.slice(0, 10)}
+              </h3>
               <h3 className="articles">
                 Comment count: {article.comment_count}
               </h3>
@@ -38,30 +40,19 @@ export const ArticleList = props => {
       <div className="articleCardsCon">
         {props.articles.slice(1, 20).map(article => {
           return (
-            <Link className="articleCard" to={`${article.article_id}`}>
-              <div key={article.article_id}>
-                <div className="articleL">
-                  <Link to={`${article.article_id}`} className="cardLink">
-                    <h3 className="articles"> {article.title}</h3>
-                    <hr className="cardHr" />
-                    <p className="articles">{article.author}</p>
-                  </Link>
-                  {/* {props.created_at && ( */}
-                  <p className="articles">
-                    Date posted: {article.created_at.slice(0, 10)}
-                  </p>
-                  {/* )} */}
-                  {/* {props.comment_count && ( */}
-                  <p className="articles">
-                    Comment count: {article.comment_count}
-                  </p>
-                  {/* )} */}
-                  {/* {props.votes &&  ( */}
-                  <p className="articles">Votes: {article.votes}</p>
-                  {/* )} */}
-                  {/* <hr className="articleList" /> */}
-                </div>
-              </div>
+            <Link
+              className="articleCard"
+              to={`${article.article_id}`}
+              key={article.article_id}
+            >
+              <h3 className="articles"> {article.title}</h3>
+              <hr className="cardHr" />
+              <p className="articles">{article.author}</p>
+              <p className="articles">
+                Date posted: {article.created_at.slice(0, 10)}
+              </p>
+              <p className="articles">Comment count: {article.comment_count}</p>
+              <p className="articles">Votes: {article.votes}</p>
             </Link>
           );
         })}

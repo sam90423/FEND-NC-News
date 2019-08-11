@@ -93,19 +93,22 @@ export default class TopicPage extends React.Component {
             <div className="articleCardsCon">
               {this.state.relArticlesInfo.map((article, index) => {
                 return (
-                  <div className="articleCard" key={index}>
-                    <Link
-                      className="articles"
-                      to={`/articles/${article.article_id}`}
-                    >
-                      <h3> {article.title}</h3>
-                      <hr className="cardHr" />
-                      {article.author}
-                    </Link>
-                    <p>Date posted: {article.created_at.slice(0, 10)}</p>
-                    <p>Comment count: {article.comment_count}</p>
-                    <p>Votes: {article.votes}</p>
-                  </div>
+                  <Link
+                    className="articleCard"
+                    key={index}
+                    to={`/articles/${article.article_id}`}
+                  >
+                    <h3 className="articles"> {article.title}</h3>
+                    <hr className="cardHr" />
+                    <p className="articles">{article.author}</p>
+                    <p className="articles">
+                      Date posted: {article.created_at.slice(0, 10)}
+                    </p>
+                    <p className="articles">
+                      Comment count: {article.comment_count}
+                    </p>
+                    <p className="articles">Votes: {article.votes}</p>
+                  </Link>
                 );
               })}
             </div>
