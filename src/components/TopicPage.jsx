@@ -1,12 +1,15 @@
 import React from "react";
-import { getArticlesByTopic } from "../api.js";
+import { getArticlesByTopic, sortArticles } from "../api.js";
 import { Link, navigate } from "@reach/router";
 
 export default class TopicPage extends React.Component {
   state = {
     topicInfo: [],
     relArticlesInfo: [],
-    loading: true
+    loading: true,
+    commentCount: false,
+    created_at: false,
+    votes: false
   };
   componentDidMount() {
     getArticlesByTopic(this.props.topicslug)
@@ -30,7 +33,62 @@ export default class TopicPage extends React.Component {
             <h1>Topic</h1>
             <hr className="hr" />
             <h2 className="title">{this.props.topicslug}</h2>
-            <h1>Articles:</h1>
+            <div className="sortButtonsCon">
+              <div>
+                <button
+                  className="sortButton"
+                  onClick={() =>
+                    sortArticles("created_at").then(articles => {
+                      this.setState({
+                        relArticlesInfo: articles,
+                        created_at: true,
+                        comment_count: false,
+                        votes: false
+                      });
+                    })
+                  }
+                >
+                  Most <br /> Recent
+                </button>
+              </div>
+              <div>
+                <button
+                  className="sortButton"
+                  onClick={() =>
+                    sortArticles("votes").then(articles => {
+                      this.setState({
+                        relArticlesInfo: articles,
+                        votes: true,
+                        comment_count: false,
+                        created_at: false
+                      });
+                    })
+                  }
+                >
+                  Most
+                  <br />
+                  Votes
+                </button>
+              </div>
+
+              <div>
+                <button
+                  className="sortButton"
+                  onClick={() =>
+                    sortArticles("comment_count").then(articles => {
+                      this.setState({
+                        relArticlesInfo: articles,
+                        comment_count: true,
+                        created_at: false,
+                        votes: false
+                      });
+                    })
+                  }
+                >
+                  Most <br /> Comments
+                </button>
+              </div>
+            </div>
             <hr className="hr" />
             <div className="articleCardsCon">
               {this.state.relArticlesInfo.map((article, index) => {

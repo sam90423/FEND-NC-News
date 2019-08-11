@@ -247,7 +247,7 @@ button:focus {
 
 .articleCardsCon {
   min-width: 275;
-  margin-bottom: 12;
+  padding-bottom: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 91%;
