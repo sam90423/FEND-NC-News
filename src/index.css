@@ -274,3 +274,11 @@ button:focus {
   width: 5%;
   border-radius: 5px;
 }
+
+.topicCardsCon {
+  min-width: 275;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 91%;
+  margin-left: 60px;
+}
