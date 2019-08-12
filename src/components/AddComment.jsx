@@ -10,7 +10,7 @@ export default class AddComment extends React.Component {
       <div>
         {this.props.loginUser && (
           <div className="centerText">
-            <h3>Add A New Comment</h3>
+            <h3>Post A Comment</h3>
             <form onSubmit={this.handleSubmit}>
               <textarea
                 required
@@ -23,7 +23,7 @@ export default class AddComment extends React.Component {
                 type="text"
               />
               <br />
-              <button className="sortButton">Add Comment</button>
+              <button className="sortButton">Post</button>
             </form>
           </div>
         )}
