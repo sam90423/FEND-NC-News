@@ -7,9 +7,15 @@ export const SingleArticle = props => {
         <h1 className="articleTitle">{props.article.title}</h1>
         <hr className="hr" />
         <div className="sortButtonsCon">
-          <h3 className="articleDetails">By {props.article.author} </h3>
+          <h3 className="articleDetails">
+            By <br />
+            {props.article.author}{" "}
+          </h3>
 
-          <h3 className="articleDetails">Topic {props.article.topic}</h3>
+          <h3 className="articleDetails">
+            Topic <br />
+            {props.article.topic}
+          </h3>
           <h3>
             Date <br />
             {props.article.created_at.slice(0, 10)}
