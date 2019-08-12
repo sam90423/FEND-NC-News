@@ -4,7 +4,7 @@ export const SingleArticle = props => {
   return (
     <div className="centerText">
       <div>
-        <h1>{props.article.title}</h1>
+        <h1 className="articleTitle">{props.article.title}</h1>
         <hr className="hr" />
         <div className="sortButtonsCon">
           <h3 className="articleDetails">By {props.article.author} </h3>

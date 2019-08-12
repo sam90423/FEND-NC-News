@@ -19,10 +19,8 @@ export default class Comment extends React.Component {
       <div>
         <div className="comments">
           <div className="commentDetailsCon">
-            <h3 className="articleDetails">
-              {this.props.comment.created_at.slice(0, 10)}
-            </h3>
-            <h3>{this.props.comment.author}</h3>
+            <h3 className="articleDetails">{this.props.comment.author}</h3>
+            <h3>{this.props.comment.created_at.slice(0, 10)}</h3>
           </div>
 
           <p className="article">{this.props.comment.body}</p>

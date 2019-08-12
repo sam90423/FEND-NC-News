@@ -11,12 +11,12 @@ export default class AddComment extends React.Component {
         {this.props.loginUser && (
           <div className="centerText">
             <h3>Add A New Comment</h3>
-            <p>Comment</p>
             <form onSubmit={this.handleSubmit}>
               <textarea
                 required
-                rows="4"
-                cols="40"
+                rows="6"
+                cols="80"
+                className="textArea"
                 name="commentInput"
                 onChange={this.handleChange}
                 id="body"
