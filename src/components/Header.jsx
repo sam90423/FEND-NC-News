@@ -9,12 +9,6 @@ export default class Header extends React.Component {
         <div className="headerCon">
           <h1 className="topTitle">NC News</h1>
           <nav className="buttonsCon">
-            {/* <button className="button1 pageButton">
-              <Link className="link" to="/">
-                Home
-              </Link>
-            </button> */}
-
             <button className="button1 pageButton">
               <Link className="link" to="/">
                 Articles

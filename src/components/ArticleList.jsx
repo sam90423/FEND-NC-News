@@ -7,7 +7,7 @@ export const ArticleList = props => {
       {props.articles.slice(0, 1).map(article => {
         return (
           <div key={`${article.article_id}`}>
-            <Link to={`${article.article_id}`}>
+            <Link to={`articles/${article.article_id}`}>
               <video
                 className="latestPostVideo"
                 src="Pexels Videos 2342561.mp4"
@@ -19,7 +19,7 @@ export const ArticleList = props => {
             </Link>
 
             <ul className="latestPostText">
-              <Link className="articles" to={`${article.article_id}`}>
+              <Link className="articles" to={`articles/${article.article_id}`}>
                 <h1 className="articles">{article.title}</h1>
               </Link>
 
@@ -42,7 +42,7 @@ export const ArticleList = props => {
           return (
             <Link
               className="articleCard"
-              to={`${article.article_id}`}
+              to={`articles/${article.article_id}`}
               key={article.article_id}
             >
               <h3 className="articles"> {article.title}</h3>

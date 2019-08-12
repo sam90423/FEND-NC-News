@@ -23,6 +23,7 @@ class App extends Component {
         />
         <div className="content mainConPadLR">
           <Router>
+            {/* <Home path="/" /> */}
             <Articles path="/" />
             <ArticlePage
               path="/articles/:articleid"
