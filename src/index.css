@@ -70,8 +70,9 @@ input:focus {
   padding: 3px 10px;
   font-weight: bold;
   outline: none;
-  width: 90px;
+  width: 80px;
   height: 40px;
+  max-width: 100%;
 }
 
 button:hover {
@@ -105,7 +106,7 @@ button:focus {
 .headerCon {
   padding-top: 1em;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto auto auto;
   justify-items: center;
 }
 
@@ -113,6 +114,7 @@ button:focus {
   background-color: black;
   position: sticky;
   top: 0;
+  max-width: 100%;
 }
 
 .topTitle {
@@ -130,7 +132,7 @@ button:focus {
   grid-column-start: 2;
   display: grid;
   grid-column-gap: 15px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-items: center;
 }
@@ -165,10 +167,6 @@ button:focus {
 }
 .button2:focus {
   color: red;
-}
-
-.button3 {
-  grid-column-start: 3;
 }
 
 .articleL {
@@ -229,6 +227,8 @@ button:focus {
   padding-left: 0;
   padding-top: 60px;
   padding-right: 50px;
+  /* min-width: 200px;
+  max-width: 400px; */
 }
 
 .latestPostVideo {
@@ -305,7 +305,7 @@ button:focus {
 
 .textArea {
   resize: both;
-  max-width: 375px;
+  max-width: 100%;
 }
 
 .verticalLine {

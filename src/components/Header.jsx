@@ -9,18 +9,18 @@ export default class Header extends React.Component {
         <div className="headerCon">
           <h1 className="topTitle">NC News</h1>
           <nav className="buttonsCon">
-            <button className="button1 pageButton">
+            {/* <button className="button1 pageButton">
               <Link className="link" to="/">
                 Home
               </Link>
-            </button>
+            </button> */}
 
-            <button className="button2 pageButton">
-              <Link className="link" to="/articles">
+            <button className="button1 pageButton">
+              <Link className="link" to="/">
                 Articles
               </Link>
             </button>
-            <button className="button3 pageButton">
+            <button className="button2 pageButton">
               <Link className="link" to="/topics">
                 Topics
               </Link>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import { Router } from "@reach/router";
-import Home from "./components/Home";
 import Articles from "./components/Articles";
 import ArticlePage from "./components/ArticlePage";
 import Topics from "./components/Topics";
@@ -24,8 +23,7 @@ class App extends Component {
         />
         <div className="content mainConPadLR">
           <Router>
-            <Home path="/" />
-            <Articles path="/articles" />
+            <Articles path="/" />
             <ArticlePage
               path="/articles/:articleid"
               loginUser={this.state.loginUser}
