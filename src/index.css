@@ -137,7 +137,7 @@ button:focus {
 
 .sortButtonsCon {
   display: inline-grid;
-  grid-template-columns: 100px 100px 100px;
+  grid-template-columns: auto auto auto;
   grid-column-gap: 30px;
   justify-items: center;
   align-content: center;
@@ -293,4 +293,12 @@ button:focus {
   border-left: 2px solid red;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.commentDetailsCon {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 30px;
+  justify-items: center;
+  align-content: center;
 }

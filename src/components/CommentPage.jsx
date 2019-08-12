@@ -18,55 +18,68 @@ export default class Comment extends React.Component {
     return (
       <div>
         <div className="comments">
-          <p>{this.props.comment.created_at.slice(0, 10)}</p>
-          <p>{this.props.comment.author}</p>
-          <p>{this.props.comment.body}</p>
+          <div className="commentDetailsCon">
+            <h3 className="articleDetails">
+              {this.props.comment.created_at.slice(0, 10)}
+            </h3>
+            <h3>{this.props.comment.author}</h3>
+          </div>
 
-          <p>Votes: {this.props.comment.votes + this.state.commentVoteCount}</p>
+          <p className="article">{this.props.comment.body}</p>
+
+          <h3>
+            Votes: {this.props.comment.votes + this.state.commentVoteCount}
+          </h3>
+
           {this.props.loginUser && (
             <div>
-              <button
-                disabled={this.state.commentVoteCount === 1}
-                name="yes"
-                className="sortButton"
-                onClick={() =>
-                  this.handleCommentVote(
-                    1,
-                    this.props.comment.comment_id,
-                    "comments"
-                  )
-                }
-              >
-                YES!
-              </button>
-              <button
-                disabled={this.state.commentVoteCount === -1}
-                name="no"
-                className="sortButton"
-                onClick={() =>
-                  this.handleCommentVote(
-                    -1,
-                    this.props.comment.comment_id,
-                    "comments"
-                  )
-                }
-              >
-                NO!
-              </button>{" "}
-              {this.props.loginUser === this.props.comment.author && (
+              <div className="commentDetailsCon">
                 <button
+                  disabled={this.state.commentVoteCount === 1}
+                  name="yes"
                   className="sortButton"
                   onClick={() =>
-                    this.props.deleteRefreshComments(
-                      this.props.comment.comment_id
+                    this.handleCommentVote(
+                      1,
+                      this.props.comment.comment_id,
+                      "comments"
                     )
                   }
                 >
-                  Delete Comment
+                  YES!
                 </button>
-              )}
+                <button
+                  disabled={this.state.commentVoteCount === -1}
+                  name="no"
+                  className="sortButton"
+                  onClick={() =>
+                    this.handleCommentVote(
+                      -1,
+                      this.props.comment.comment_id,
+                      "comments"
+                    )
+                  }
+                >
+                  NO!
+                </button>{" "}
+              </div>
+              <div>
+                {this.props.loginUser === this.props.comment.author && (
+                  <button
+                    className="sortButton"
+                    onClick={() =>
+                      this.props.deleteRefreshComments(
+                        this.props.comment.comment_id
+                      )
+                    }
+                  >
+                    Delete Comment
+                  </button>
+                )}
+              </div>
             </div>
           )}
+
           <hr className="articleList" />
         </div>
       </div>
