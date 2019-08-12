@@ -5,11 +5,18 @@ export const SingleArticle = props => {
     <div className="centerText">
       <div>
         <h1>{props.article.title}</h1>
-        <h3>{props.article.topic}</h3>
-        <p>{props.article.author}</p>
-        <p>{props.article.created_at.slice(0, 10)}</p>
-        <p>{props.article.body}</p>
-        <p>Votes: {props.article.votes + props.articleVoteCount}</p>
+        <hr className="hr" />
+        <div className="sortButtonsCon">
+          <h3 className="articleDetails">By {props.article.author} </h3>
+
+          <h3 className="articleDetails">Topic {props.article.topic}</h3>
+          <h3>
+            Date <br />
+            {props.article.created_at.slice(0, 10)}
+          </h3>
+        </div>
+        <p className="article">{props.article.body}</p>
+        <h3>Votes: {props.article.votes + props.articleVoteCount}</h3>
         {props.loginUser && (
           <div>
             <button

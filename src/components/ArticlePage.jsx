@@ -44,8 +44,6 @@ export default class ArticlePage extends React.Component {
             <h3>Loading...</h3>
           ) : (
             <div>
-              <h1 className="centerText">Article</h1>
-              <hr className="hr" />
               <SingleArticle
                 loginUser={this.props.loginUser}
                 article={this.state.articleInfo}

@@ -55,13 +55,6 @@ textarea {
   color: white;
 }
 
-/* .avatarWel {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-  margin-bottom: 2px;
-} */
-
 input:focus {
   padding: 3px 5px;
   margin-right: 2px;
@@ -138,7 +131,6 @@ button:focus {
   display: grid;
   grid-column-gap: 15px;
   grid-template-columns: 1fr 1fr 1fr;
-  /* grid-template-columns: 80px 80px 80px; */
   align-items: center;
   justify-items: center;
 }
@@ -149,8 +141,6 @@ button:focus {
   grid-column-gap: 30px;
   justify-items: center;
   align-content: center;
-
-  /* width: 50%; */
 }
 
 .login {
@@ -286,4 +276,21 @@ button:focus {
 
 .cardLink {
   text-decoration: none;
+}
+
+.articleDetails {
+  border-right: 2px solid red;
+  height: 35px;
+  padding-right: 18px;
+}
+
+.article {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2.2;
+  border-right: 2px solid red;
+  border-left: 2px solid red;
+  padding-left: 20px;
+  padding-right: 20px;
 }
