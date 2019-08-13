@@ -16,7 +16,7 @@ export const SingleArticle = props => {
             Topic <br />
             {props.article.topic}
           </h3>
-          <h3>
+          <h3 className="responsiveArticleDetails">
             Date <br />
             {props.article.created_at.slice(0, 10)}
           </h3>

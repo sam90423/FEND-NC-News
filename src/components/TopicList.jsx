@@ -13,6 +13,7 @@ export const TopicList = props => {
             <hr className="cardHr" />
             <Link to={`${topic.slug}`}>
               <video
+                className="latestPostVideo"
                 src="Codes - 23355.mp4"
                 height="325"
                 width="500"
@@ -33,6 +34,7 @@ export const TopicList = props => {
             <hr className="cardHr" />
             <Link to={`${topic.slug}`}>
               <video
+                className="latestPostVideo"
                 src="Football - 15734.mp4"
                 height="325"
                 width="500"
@@ -53,6 +55,7 @@ export const TopicList = props => {
             <hr className="cardHr" />
             <Link to={`${topic.slug}`}>
               <video
+                className="latestPostVideo"
                 src="Food - 24999.mp4"
                 height="325"
                 width="500"

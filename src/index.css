@@ -16,6 +16,7 @@ code {
 .mainConPadLR {
   padding-left: 1em;
   padding-right: 1em;
+  max-width: 100%;
 }
 
 .hr {
@@ -87,6 +88,7 @@ button:focus {
 .content {
   display: block;
   text-align: left;
+  max-width: 100%;
 }
 
 .sortButton {
@@ -108,6 +110,7 @@ button:focus {
   display: grid;
   grid-template-columns: auto auto auto;
   justify-items: center;
+  max-width: 100%;
 }
 
 .topBar {
@@ -143,6 +146,7 @@ button:focus {
   grid-column-gap: 30px;
   justify-items: center;
   align-content: center;
+  max-width: 100%;
 }
 
 .login {
@@ -223,16 +227,16 @@ button:focus {
 
 .latestPostText {
   float: right;
-  width: 50%;
+  width: 630px;
   padding-left: 0;
   padding-top: 60px;
   padding-right: 50px;
-  /* min-width: 200px;
-  max-width: 400px; */
+  max-width: 100%;
 }
 
 .latestPostVideo {
   padding-left: 50px;
+  max-width: 100%;
 }
 
 .articleCardsCon {
@@ -243,6 +247,7 @@ button:focus {
   width: 91%;
   margin-left: 60px;
   grid-gap: 20px;
+  max-width: 100%;
 }
 
 .articleCard {
@@ -267,11 +272,12 @@ button:focus {
 }
 
 .topicCardsCon {
-  min-width: 275;
+  /* min-width: 275; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 91%;
   margin-left: 60px;
+  max-width: 100%;
 }
 
 .cardLink {
@@ -316,4 +322,52 @@ button:focus {
 .articleTitle {
   text-decoration: underline;
   text-decoration-color: red;
+}
+
+.commentDetails {
+  border-right: 2px solid red;
+  height: 35px;
+  padding-right: 30px;
+}
+
+@media screen and (max-width: 450px) {
+  .latestPostVideo {
+    padding: 0;
+    margin: 0;
+    height: 200px;
+  }
+
+  .latestPostText {
+    padding: 0;
+    margin: 0;
+  }
+
+  .sortButtonsCon {
+    grid-column-gap: 0;
+  }
+
+  .articleCardsCon {
+    grid-template-columns: 1fr;
+    padding: 15px;
+    margin: 0;
+  }
+
+  .articleDetails {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 0.85em;
+  }
+
+  .responsiveArticleDetails {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 0.85em;
+  }
+
+  .topicCardsCon {
+    grid-template-columns: 1fr;
+    padding: 0;
+    margin: 0;
+    width: 400px;
+  }
 }
