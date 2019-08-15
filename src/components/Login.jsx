@@ -40,8 +40,8 @@ export default class Login extends React.Component {
             </button>
           </div>
         ) : (
-          <div>
-            <form className="loginBox">
+          <div className="loginBox">
+            <form>
               <input
                 value={this.state.userNameInput}
                 onChange={this.handleChange}
