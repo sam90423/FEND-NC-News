@@ -16,7 +16,6 @@ code {
 .mainConPadLR {
   padding-left: 1em;
   padding-right: 1em;
-  max-width: 100%;
 }
 
 .hr {
@@ -88,7 +87,6 @@ button:focus {
 .content {
   display: block;
   text-align: left;
-  max-width: 100%;
 }
 
 .sortButton {
