@@ -24,14 +24,18 @@ export const ArticleList = props => {
               </Link>
 
               <hr className="cardHr" />
-              <h3 className="articles">By: {article.author}</h3>
-              <h3 className="articles">
+              <h3 className="articles latestPostDetails">
+                By: {article.author}
+              </h3>
+              <h3 className="articles latestPostDetails">
                 Date created: {article.created_at.slice(0, 10)}
               </h3>
-              <h3 className="articles">
+              <h3 className="articles latestPostDetails">
                 Comment count: {article.comment_count}
               </h3>
-              <h3 className="articles">Votes: {article.votes}</h3>
+              <h3 className="articles latestPostDetails">
+                Votes: {article.votes}
+              </h3>
             </ul>
           </div>
         );

@@ -35,13 +35,13 @@ export default class Login extends React.Component {
               />
             </div>
             <p className="loginName">Welcome back {userName}</p>
-            <button className="pageButton" onClick={this.logOutUser}>
+            <button className="pageButton link" onClick={this.logOutUser}>
               Log Out
             </button>
           </div>
         ) : (
-          <div className="loginBox">
-            <form>
+          <div>
+            <form className="loginBox">
               <input
                 value={this.state.userNameInput}
                 onChange={this.handleChange}
@@ -50,6 +50,7 @@ export default class Login extends React.Component {
                 className="inputBox"
                 placeholder="Username"
               />
+              <br />
               <button className="pageButton" onClick={this.loginUser}>
                 Log In
               </button>

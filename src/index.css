@@ -18,6 +18,26 @@ code {
   padding-right: 1em;
 }
 
+p {
+  font-family: "Roboto Mono", monospace;
+}
+
+h1 {
+  font-family: "Lexend Deca", sans-serif;
+}
+
+button {
+  font-family: "Lexend Deca", sans-serif;
+}
+
+h3 {
+  font-family: "Lexend Deca", sans-serif;
+}
+
+h2 {
+  font-family: "Lexend Deca", sans-serif;
+}
+
 .hr {
   display: block;
   margin-top: 1em;
@@ -83,6 +103,7 @@ button:hover {
 
 button:focus {
   color: red;
+  transition: color 0.2s;
 }
 
 .content {
@@ -123,7 +144,12 @@ button:focus {
 .topTitle {
   grid-column-start: 1;
   color: white;
-  padding-top: 15px;
+  padding-top: 20px;
+}
+
+.topTitle:focus {
+  color: red;
+  transition: color 0.2s;
 }
 
 .title {
@@ -232,6 +258,10 @@ button:focus {
   padding-top: 60px;
   padding-right: 50px;
   max-width: 100%;
+}
+
+.latestPostDetails {
+  font-family: "Roboto Mono", monospace;
 }
 
 .latestPostVideo {

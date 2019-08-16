@@ -7,7 +7,9 @@ export default class Header extends React.Component {
     return (
       <div className="topBar">
         <div className="headerCon">
-          <h1 className="topTitle">NC News</h1>
+          <Link className="link topTitle" to="/">
+            <h1>NC News</h1>
+          </Link>
           <nav className="buttonsCon">
             <button className="button1 pageButton">
               <Link className="link" to="/">
