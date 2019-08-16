@@ -44,7 +44,7 @@ export default class Comment extends React.Component {
                     )
                   }
                 >
-                  YES!
+                  LIKE!
                 </button>
                 <button
                   disabled={this.state.commentVoteCount === -1}
@@ -58,7 +58,7 @@ export default class Comment extends React.Component {
                     )
                   }
                 >
-                  NO!
+                  DISLIKE!
                 </button>{" "}
               </div>
               <div>
