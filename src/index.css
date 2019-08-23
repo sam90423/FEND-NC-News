@@ -55,6 +55,7 @@ input {
   border: 2px solid black;
   font-weight: bold;
   max-width: 100%;
+  width: 79%;
 }
 
 .centerText {
@@ -68,12 +69,14 @@ textarea {
 }
 
 .loggedIn {
+  max-width: 100%;
   padding-bottom: 10px;
 }
 
 .loginName {
   margin: 2px;
   color: white;
+  /* width: 167.5; */
 }
 
 input:focus {
@@ -88,7 +91,7 @@ input:focus {
   border: none;
   background-color: black;
   color: white;
-  padding: 3px 10px;
+  padding: 0px 10px;
   font-weight: bold;
   outline: none;
   width: 80px;
@@ -131,6 +134,7 @@ button:focus {
   grid-template-columns: auto auto auto;
   justify-items: center;
   max-width: 100%;
+  height: 124px;
 }
 
 .topBar {
@@ -145,6 +149,7 @@ button:focus {
   grid-column-start: 1;
   color: white;
   padding-top: 20px;
+  justify-content: end;
 }
 
 .topTitle:focus {
@@ -362,6 +367,7 @@ button:focus {
 
 .loginBox {
   max-width: 100%;
+  /* width: 167.5px; */
 }
 
 @media screen and (max-width: 450px) {
@@ -392,6 +398,10 @@ button:focus {
     font-size: 0.85em;
   }
 
+  .article {
+    width: 80%;
+  }
+
   .responsiveArticleDetails {
     padding-right: 10px;
     padding-left: 10px;
@@ -403,5 +413,9 @@ button:focus {
     padding: 0;
     margin: 0;
     width: 400px;
+  }
+
+  .headerCon {
+    height: 20%;
   }
 }

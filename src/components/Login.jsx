@@ -34,14 +34,14 @@ export default class Login extends React.Component {
                 alt="Avatar"
               />
             </div>
-            <p className="loginName">Welcome back {userName}</p>
+            <p className="loginName">Welcome {userName}</p>
             <button className="pageButton link" onClick={this.logOutUser}>
               Log Out
             </button>
           </div>
         ) : (
-          <div>
-            <form className="loginBox">
+          <div className="loginBox">
+            <form>
               <input
                 value={this.state.userNameInput}
                 onChange={this.handleChange}
@@ -55,7 +55,10 @@ export default class Login extends React.Component {
                 Log In
               </button>
             </form>
-            <p className="loginName">Maybe jessjelly might work?</p>
+            <p className="loginName">
+              jessjelly might
+              <br /> work?
+            </p>
           </div>
         )}
       </div>
